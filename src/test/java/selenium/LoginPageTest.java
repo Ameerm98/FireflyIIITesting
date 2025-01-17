@@ -33,13 +33,7 @@ public class LoginPageTest {
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         loginPage.get();
-        try {
-            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
-            visitSiteButton.click();
-        } catch (TimeoutException err) {
-            System.out.println("Ngrok warning page was not loaded");
-        }
+
     }
 
 

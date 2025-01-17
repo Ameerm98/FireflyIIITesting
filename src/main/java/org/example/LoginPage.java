@@ -1,9 +1,14 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -27,6 +32,14 @@ public class LoginPage extends LoadableComponent {
     protected void load(){
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.get(baseURL+"/login");
+        try {
+            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
+            visitSiteButton.click();
+        } catch (TimeoutException err) {
+            System.out.println("Ngrok warning page was not loaded");
+        }
+
     }
     @Override
     protected void isLoaded() throws Error {
