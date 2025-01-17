@@ -10,19 +10,19 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import java.time.Duration;
 
 public class HomePage extends LoadableComponent {
-    private final String baseURL = "http://localhost";
+    private final String baseURL = "https://a05c-2a06-c701-9ca4-ad00-9cc3-5696-30ab-de32.ngrok-free.app";
     private final WebDriver driver;
     private final By createSideBarBy = By.className("fa-plus-circle");
-    private final By assetAccountBy = By.cssSelector("a[href='http://localhost/accounts/create/asset']");
-    private final By expenseAccountBy = By.linkText("http://localhost/accounts/create/expense");
-    private final By revenueAccountBy = By.linkText("http://localhost/accounts/create/revenue");
-    private final By billBy = By.linkText("http://localhost/bills/create");
-    private final By budgetBy = By.linkText("http://localhost/budgets/create");
-    private final By piggyBankBy = By.linkText("http://localhost/piggy-banks/create");
-    private final By transferBy = By.cssSelector("a[href='http://localhost/transactions/create/transfer']");
-    private final By categoryCreateButtonBy = By.cssSelector("a[href='http://localhost/categories/create']");
-    private final By withdrawalBy = By.linkText("http://localhost/transactions/create/withdrawal");
-    private final By budgetsBy = By.linkText("http://localhost/budgets");
+    private final By assetAccountBy = By.cssSelector("a[href='"+baseURL+"/accounts/create/asset']");
+    private final By expenseAccountBy = By.linkText(baseURL+"/accounts/create/expense");
+    private final By revenueAccountBy = By.linkText(baseURL+"/accounts/create/revenue");
+    private final By billBy = By.linkText(baseURL+"/bills/create");
+    private final By budgetBy = By.linkText(baseURL+"/budgets/create");
+    private final By piggyBankBy = By.linkText(baseURL+"/piggy-banks/create");
+    private final By transferBy = By.cssSelector("a[href='"+baseURL+"/transactions/create/transfer']");
+    private final By categoryCreateButtonBy = By.cssSelector("a[href='"+baseURL+"/categories/create']");
+    private final By withdrawalBy = By.linkText(baseURL+"/transactions/create/withdrawal");
+    private final By budgetsBy = By.linkText(baseURL+"/budgets");
     private final By AccountBy = By.cssSelector("tr:nth-child(2) > td:nth-child(9) > div > button");
     private final By deleteBy = By.cssSelector("div.box-footer > input");
 
@@ -67,12 +67,6 @@ public class HomePage extends LoadableComponent {
 
     }
 
-    public PiggyBankCreate createPiggyBank(){
-        driver.findElement(createSideBarBy).click();
-        driver.findElement(piggyBankBy).click();
-
-        return new PiggyBankCreate();
-    }
 
     public TransferCreatePage createTransferButton(){
         driver.findElement(createSideBarBy).click();
@@ -81,15 +75,15 @@ public class HomePage extends LoadableComponent {
     }
 
     public Transfers enterTransfers() throws InterruptedException {
-        driver.get("http://localhost/transactions/transfers");
+        driver.get(baseURL+"/transactions/transfers");
         Thread.sleep(1000);
         //driver.findElement(TransfersBy).click();
-        driver.findElement(By.cssSelector("a[href='http://localhost/transactions/transfer/all']")).click();
+        driver.findElement(By.cssSelector("a[href='"+baseURL+"/transactions/transfer/all']")).click();
         return new Transfers(driver);
     }
 
     public void deleteCreatedAccounts(){
-        driver.get("http://localhost/accounts/asset");
+        driver.get(baseURL+"/accounts/asset");
         driver.findElement(AccountBy).click();
         Actions action = new Actions(driver);
         action.sendKeys(Keys.ARROW_DOWN).perform();

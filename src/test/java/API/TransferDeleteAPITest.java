@@ -26,7 +26,7 @@ public class TransferDeleteAPITest {
 
     @BeforeEach
     public void setup() {
-        RestAssured.baseURI = "http://localhost:80/api";
+        RestAssured.baseURI = "https://a05c-2a06-c701-9ca4-ad00-9cc3-5696-30ab-de32.ngrok-free.app/api";
         //RestAssured.port = 80; // Adjust port as needed
     }
 

@@ -9,12 +9,13 @@ import java.time.Duration;
 
 
 public class LoginPage extends LoadableComponent {
-    private final String baseURL = "http://localhost/login";
+
+    private final String baseURL = "https://a05c-2a06-c701-9ca4-ad00-9cc3-5696-30ab-de32.ngrok-free.app";
     private WebDriver driver;
     private By emailFieldBy = By.name("email");
     private By passwordFieldBy = By.name("password");
     private By signInButtonBy = By.cssSelector("button[type='submit']");
-    private By resetPasswordButtonBy = By.cssSelector("a[href='http://localhost/password/reset']");
+    private By resetPasswordButtonBy = By.cssSelector("a[href='"+baseURL+"/password/reset']");
     private By credentialsMessageBy = By.cssSelector(".alert-danger ul li");
 
     public LoginPage(WebDriver driver) {
@@ -25,7 +26,7 @@ public class LoginPage extends LoadableComponent {
     @Override
     protected void load(){
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.get(baseURL);
+        driver.get(baseURL+"/login");
     }
     @Override
     protected void isLoaded() throws Error {

@@ -4,8 +4,16 @@ import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -47,6 +55,14 @@ public class TransferEditTest {
             loginPage = new LoginPage(driver);
             homePage = new HomePage(driver);
             loginPage.get();
+
+            try {
+                Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+                WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
+                visitSiteButton.click();
+            } catch (TimeoutException err) {
+                System.out.println("Ngrok warning page was not loaded");
+            }
 
 
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
