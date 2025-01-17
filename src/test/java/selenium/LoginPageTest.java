@@ -40,7 +40,6 @@ public class LoginPageTest {
         } catch (TimeoutException err) {
             System.out.println("Ngrok warning page was not loaded");
         }
-
     }
 
 
