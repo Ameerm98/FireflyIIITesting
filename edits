@@ -1,0 +1,60 @@
+
+
+package org.example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+public class TransferCreate {
+    private final WebDriver driver;
+
+    private By descriptionBy = By.name("description");
+    private By sourceAccountBy = By.name("source[]");
+    private By destinationAccountBy = By.name("destination[]");
+    private By amountBy = By.name("amount[]");
+    private Select budgetSelect;
+    private Select piggyBankSelect;
+    private Select billSelect;
+
+
+
+
+
+    TransferCreate(WebDriver driver){
+        this.driver = driver;
+        WebElement budgetElm = driver.findElement(By.name("budget[]"));
+        WebElement piggyBankElm = driver.findElement(By.name("piggy_bank[]"));
+        WebElement billElm = driver.findElement(By.name("bill[]"));
+        budgetSelect = new Select(budgetElm);
+        piggyBankSelect = new Select(piggyBankElm);
+        billSelect = new Select(billElm);
+    }
+
+    public TransferCreate createTransfer(String description, String source, String destination, String amount, String budget, String piggyBank, String bill){
+        driver.findElement(descriptionBy).click();
+        driver.findElement(descriptionBy).sendKeys(description);
+        driver.findElement(sourceAccountBy).click();
+        driver.findElement(sourceAccountBy).sendKeys(source);
+        driver.findElement(destinationAccountBy).click();
+        driver.findElement(destinationAccountBy).sendKeys(destination);
+
+        driver.findElement(amountBy).click();
+        driver.findElement(amountBy).sendKeys(amount);
+        if(budget!=null){
+            budgetSelect.selectByValue(budget);
+        }
+        if (piggyBank!=null) {
+            piggyBankSelect.selectByValue(piggyBank);
+        }
+        if (bill!=null){
+            billSelect.selectByValue(bill);
+        }
+
+
+
+
+        return new TransferCreate(driver);
+    }
+}
