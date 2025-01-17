@@ -1,0 +1,2169 @@
+Index: .db.env
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.db.env b/.db.env
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.db.env	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,4 @@
++MYSQL_RANDOM_ROOT_PASSWORD=yes
++MYSQL_USER=firefly
++MYSQL_PASSWORD=AmFaAw250298#
++MYSQL_DATABASE=firefly
+\ No newline at end of file
+Index: .env
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.env b/.env
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.env	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,332 @@
++# You can leave this on "local". If you change it to production most console commands will ask for extra confirmation.
++# Never set it to "testing".
++APP_ENV=production
++
++# Set to true if you want to see debug information in error screens.
++APP_DEBUG=false
++
++# This should be your email address.
++# If you use Docker or similar, you can set this variable from a file by using SITE_OWNER_FILE
++# The variable is used in some errors shown to users who aren't admin.
++SITE_OWNER=mail@example.com
++
++# The encryption key for your sessions. Keep this very secure.
++# Change it to a string of exactly 32 chars or use something like `php artisan key:generate` to generate it.
++# If you use Docker or similar, you can set this variable from a file by using APP_KEY_FILE
++#
++# Avoid the "#" character in your APP_KEY, it may break things.
++#
++APP_KEY=SomeRandomStringOf32CharsExactly
++
++# Firefly III will launch using this language (for new users and unauthenticated visitors)
++# For a list of available languages: https://github.com/firefly-iii/firefly-iii/tree/main/resources/lang
++#
++# If text is still in English, remember that not everything may have been translated.
++DEFAULT_LANGUAGE=en_US
++
++# The locale defines how numbers are formatted.
++# by default this value is the same as whatever the language is.
++DEFAULT_LOCALE=equal
++
++# Change this value to your preferred time zone.
++# Example: Europe/Amsterdam
++# For a list of supported time zones, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
++TZ=Europe/Amsterdam
++
++# TRUSTED_PROXIES is a useful variable when using Docker and/or a reverse proxy.
++# Set it to ** and reverse proxies work just fine.
++TRUSTED_PROXIES=
++
++# The log channel defines where your log entries go to.
++# Several other options exist. You can use 'single' for one big fat error log (not recommended).
++# Also available are 'syslog', 'errorlog' and 'stdout' which will log to the system itself.
++# A rotating log option is 'daily', creates 5 files that (surprise) rotate.
++# A cool option is 'papertrail' for cloud logging
++# Default setting 'stack' will log to 'daily' and to 'stdout' at the same time.
++LOG_CHANNEL=stack
++
++# Log level. You can set this from least severe to most severe:
++# debug, info, notice, warning, error, critical, alert, emergency
++# If you set it to debug your logs will grow large, and fast. If you set it to emergency probably
++# nothing will get logged, ever.
++APP_LOG_LEVEL=notice
++
++# Audit log level.
++# The audit log is used to log notable Firefly III events on a separate channel.
++# These log entries may contain sensitive financial information.
++# The audit log is disabled by default.
++#
++# To enable it, set AUDIT_LOG_LEVEL to "info"
++# To disable it, set AUDIT_LOG_LEVEL to "emergency"
++AUDIT_LOG_LEVEL=emergency
++
++#
++# If you want, you can redirect the audit logs to another channel.
++# Set 'audit_stdout', 'audit_syslog', 'audit_errorlog' to log to the system itself.
++# Use audit_daily to log to a rotating file.
++# Use audit_papertrail to log to papertrail.
++#
++# If you do this, the audit logs may be mixed with normal logs because the settings for these channels
++# are often the same as the settings for the normal logs.
++AUDIT_LOG_CHANNEL=
++
++#
++# Used when logging to papertrail:
++# Also used when audit logs log to papertrail:
++#
++PAPERTRAIL_HOST=
++PAPERTRAIL_PORT=
++
++# Database credentials. Make sure the database exists. I recommend a dedicated user for Firefly III
++# For other database types, please see the FAQ: https://docs.firefly-iii.org/references/faq/install/#i-want-to-use-sqlite
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++# Use "pgsql" for PostgreSQL
++# Use "mysql" for MySQL and MariaDB.
++# Use "sqlite" for SQLite.
++DB_CONNECTION=mysql
++DB_HOST=db
++DB_PORT=3306
++DB_DATABASE=firefly
++DB_USERNAME=firefly
++DB_PASSWORD=AmFaAw250298#
++# leave empty or omit when not using a socket connection
++DB_SOCKET=
++
++# MySQL supports SSL. You can configure it here.
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++MYSQL_USE_SSL=false
++MYSQL_SSL_VERIFY_SERVER_CERT=true
++# You need to set at least of these options
++MYSQL_SSL_CAPATH=/etc/ssl/certs/
++MYSQL_SSL_CA=
++MYSQL_SSL_CERT=
++MYSQL_SSL_KEY=
++MYSQL_SSL_CIPHER=
++
++# PostgreSQL supports SSL. You can configure it here.
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++PGSQL_SSL_MODE=prefer
++PGSQL_SSL_ROOT_CERT=null
++PGSQL_SSL_CERT=null
++PGSQL_SSL_KEY=null
++PGSQL_SSL_CRL_FILE=null
++
++# For postgresql 15 and up, setting this to public will no longer work as expected, becasuse the
++# 'public' schema is without grants. This can be worked around by having a super user grant those
++# necessary privileges, but in security conscious setups that's not viable.
++# You will need to set this to the schema you want to use.
++PGSQL_SCHEMA=public
++
++# If you're looking for performance improvements, you could install memcached or redis
++CACHE_DRIVER=file
++SESSION_DRIVER=file
++
++# If you set either of the options above to 'redis', you might want to update these settings too
++# If you use Docker or similar, you can set REDIS_HOST_FILE, REDIS_PASSWORD_FILE or
++# REDIS_PORT_FILE to set the value from a file instead of from an environment variable
++
++# can be tcp or unix. http is not supported
++REDIS_SCHEME=tcp
++
++# use only when using 'unix' for REDIS_SCHEME. Leave empty otherwise.
++REDIS_PATH=
++
++# use only when using 'tcp' or 'http' for REDIS_SCHEME. Leave empty otherwise.
++REDIS_HOST=127.0.0.1
++REDIS_PORT=6379
++
++# Use only with Redis 6+ with proper ACL set. Leave empty otherwise.
++REDIS_USERNAME=
++REDIS_PASSWORD=
++
++# always use quotes and make sure redis db "0" and "1" exists. Otherwise change accordingly.
++REDIS_DB="0"
++REDIS_CACHE_DB="1"
++
++# Cookie settings. Should not be necessary to change these.
++# If you use Docker or similar, you can set COOKIE_DOMAIN_FILE to set
++# the value from a file instead of from an environment variable
++# Setting samesite to "strict" may give you trouble logging in.
++COOKIE_PATH="/"
++COOKIE_DOMAIN=
++COOKIE_SECURE=false
++COOKIE_SAMESITE=lax
++
++# If you want Firefly III to email you, update these settings
++# For instructions, see: https://docs.firefly-iii.org/how-to/firefly-iii/advanced/notifications/#email
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++MAIL_MAILER=log
++MAIL_HOST=null
++MAIL_PORT=2525
++MAIL_FROM=changeme@example.com
++MAIL_USERNAME=null
++MAIL_PASSWORD=null
++MAIL_ENCRYPTION=null
++MAIL_SENDMAIL_COMMAND=
++
++# Other mail drivers:
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++MAILGUN_DOMAIN=
++MAILGUN_SECRET=
++
++# If you are on EU region in mailgun, use api.eu.mailgun.net, otherwise use api.mailgun.net
++# If you use Docker or similar, you can set this variable from a file by appending it with _FILE
++MAILGUN_ENDPOINT=api.mailgun.net
++
++# If you use Docker or similar, you can set these variables from a file by appending them with _FILE
++MANDRILL_SECRET=
++SPARKPOST_SECRET=
++MAILERSEND_API_KEY=
++
++# Firefly III can send you the following messages.
++SEND_ERROR_MESSAGE=true
++
++# These messages contain (sensitive) transaction information:
++SEND_REPORT_JOURNALS=true
++
++# Set this value to true if you want to set the location of certain things, like transactions.
++# Since this involves an external service, it's optional and disabled by default.
++ENABLE_EXTERNAL_MAP=false
++
++#
++# Enable or disable exchange rate conversion. This function isn't used yet by Firefly III
++#
++ENABLE_EXCHANGE_RATES=false
++
++# Set this value to true if you want Firefly III to download currency exchange rates
++# from the internet. These rates are hosted by the creator of Firefly III inside
++# an Azure Storage Container.
++# Not all currencies may be available. Rates may be wrong.
++ENABLE_EXTERNAL_RATES=false
++
++# The map will default to this location:
++MAP_DEFAULT_LAT=51.983333
++MAP_DEFAULT_LONG=5.916667
++MAP_DEFAULT_ZOOM=6
++
++#
++# Some objects have room for an URL, like transactions and webhooks.
++# By default, the following protocols are allowed:
++# http, https, ftp, ftps, mailto
++#
++# To change this, set your preferred comma separated set below.
++# Be sure to include http, https and other default ones if you need to.
++#
++VALID_URL_PROTOCOLS=
++
++#
++# Firefly III authentication settings
++#
++
++#
++# Firefly III supports a few authentication methods:
++# - 'web' (default, uses built in DB)
++# - 'remote_user_guard' for Authelia etc
++# Read more about these settings in the documentation.
++# https://docs.firefly-iii.org/how-to/firefly-iii/advanced/authentication/
++#
++# LDAP is no longer supported :(
++#
++AUTHENTICATION_GUARD=web
++
++#
++# Remote user guard settings
++#
++AUTHENTICATION_GUARD_HEADER=REMOTE_USER
++AUTHENTICATION_GUARD_EMAIL=
++
++#
++# Firefly III generates a basic keypair for your OAuth tokens.
++# If you want, you can overrule the key with your own (secure) value.
++# It's also possible to set PASSPORT_PUBLIC_KEY_FILE or PASSPORT_PRIVATE_KEY_FILE
++# if you're using Docker secrets or similar solutions for secret management
++#
++PASSPORT_PRIVATE_KEY=
++PASSPORT_PUBLIC_KEY=
++
++#
++# Extra authentication settings
++#
++CUSTOM_LOGOUT_URL=
++
++# You can disable the X-Frame-Options header if it interferes with tools like
++# Organizr. This is at your own risk. Applications running in frames run the risk
++# of leaking information to their parent frame.
++DISABLE_FRAME_HEADER=false
++
++# You can disable the Content Security Policy header when you're using an ancient browser
++# or any version of Microsoft Edge / Internet Explorer (which amounts to the same thing really)
++# This leaves you with the risk of not being able to stop XSS bugs should they ever surface.
++# This is at your own risk.
++DISABLE_CSP_HEADER=false
++
++# If you wish to track your own behavior over Firefly III, set valid analytics tracker information here.
++# Nobody uses this except for me on the demo site. But hey, feel free to use this if you want to.
++# Do not prepend the TRACKER_URL with http:// or https://
++# The only tracker supported is Matomo.
++# You can set the following variables from a file by appending them with _FILE:
++TRACKER_SITE_ID=
++TRACKER_URL=
++
++#
++# Firefly III supports webhooks. These are security sensitive and must be enabled manually first.
++#
++ALLOW_WEBHOOKS=false
++
++#
++# The static cron job token can be useful when you use Docker and wish to manage cron jobs.
++# 1. Set this token to any 32-character value (this is important!).
++# 2. Use this token in the cron URL instead of a user's command line token that you can find in /profile
++#
++# For more info: https://docs.firefly-iii.org/how-to/firefly-iii/advanced/cron/
++#
++# You can set this variable from a file by appending it with _FILE
++#
++STATIC_CRON_TOKEN=
++
++# You can fine tune the start-up of a Docker container by editing these environment variables.
++# Use this at your own risk. Disabling certain checks and features may result in lots of inconsistent data.
++# However if you know what you're doing you can significantly speed up container start times.
++# Set each value to true to enable, or false to disable.
++
++# Set this to true to build all locales supported by Firefly III.
++# This may take quite some time (several minutes) and is generally not recommended.
++# If you wish to change or alter the list of locales, start your Docker container with
++# `docker run -v locale.gen:/etc/locale.gen -e DKR_BUILD_LOCALE=true`
++# and make sure your preferred locales are in your own locale.gen.
++DKR_BUILD_LOCALE=false
++
++# Check if the SQLite database exists. Can be skipped if you're not using SQLite.
++# Won't significantly speed up things.
++DKR_CHECK_SQLITE=true
++
++# Leave the following configuration vars as is.
++# Unless you like to tinker and know what you're doing.
++APP_NAME=FireflyIII
++BROADCAST_DRIVER=log
++QUEUE_DRIVER=sync
++CACHE_PREFIX=firefly
++PUSHER_KEY=
++IPINFO_TOKEN=
++PUSHER_SECRET=
++PUSHER_ID=
++DEMO_USERNAME=
++DEMO_PASSWORD=
++
++#
++# Disable or enable the running balance column data
++# Please disable this. It's a very experimental feature.
++#
++USE_RUNNING_BALANCE=false
++
++#
++# The v2 layout is very experimental. If it breaks you get to keep both parts.
++# Be wary of data loss.
++#
++FIREFLY_III_LAYOUT=v1
++
++#
++# Please make sure this URL matches the external URL of your Firefly III installation.
++# It is used to validate specific requests and to generate URLs in emails.
++#
++APP_URL=http://localhost
+Index: .github/workflows/seleniumTesting.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.github/workflows/seleniumTesting.yaml b/.github/workflows/seleniumTesting.yaml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.github/workflows/seleniumTesting.yaml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,79 @@
++name: UI testing
++
++on:
++  workflow_dispatch:
++    inputs:
++      grid_url:
++        required: true
++        type: string
++        description: Grid to run tests on (local by default)
++        default: http://localhost:4444
++
++      chrome_131_0:
++        description: 'Chrome (131.0)'
++        required: false
++        type: boolean
++
++      firefox_133_0:
++        description: 'Firefox (133.0)'
++        required: false
++        type: boolean
++
++jobs:
++  TestChrome_131_0:
++    name: Test Chrome 131.0
++    runs-on: ubuntu-latest
++    if: ${{ github.event.inputs.chrome_131_0 == 'true' }}
++    steps:
++      - name: Checkout code
++        uses: actions/checkout@v3
++
++      - name: Set up JDK 23
++        uses: actions/setup-java@v3
++        with:
++          distribution: 'temurin'
++          java-version: '23'
++
++      - name: Launch standalone grid - Chrome
++        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
++        run: |
++          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-chrome:131.0-chromedriver-131.0-grid-4.27.0-20250101
++
++      - name: Run Tests
++        run: |
++          export BROWSER=chrome
++          export GRID_URL=${{ github.event.inputs.grid_url }}
++          
++          mvn test -Dtest=**/selenium/*
++          
++          # Tear down grid if exists
++          docker stop grid_container || true
++
++  TestFirefox_133_0:
++    name: Test Firefox 133.0
++    runs-on: ubuntu-latest
++    if: ${{ github.event.inputs.firefox_133_0 == 'true' }}
++    steps:
++      - name: Checkout code
++        uses: actions/checkout@v3
++
++      - name: Set up JDK 23
++        uses: actions/setup-java@v3
++        with:
++          distribution: 'temurin'
++          java-version: '23'
++
++      - name: Launch standalone grid - Firefox
++        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
++        run: |
++          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-firefox:133.0-geckodriver-0.35-grid-4.27.0-20250101
++
++      - name: Run Tests
++        run: |
++          export BROWSER=firefox
++          export GRID_URL=${{ github.event.inputs.grid_url }}
++          
++          mvn test -Dtest=**/selenium/*
++          
++          # Tear down grid if exists
++          docker stop grid_container || true
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.gitignore	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,38 @@
++target/
++!.mvn/wrapper/maven-wrapper.jar
++!**/src/main/**/target/
++!**/src/test/**/target/
++
++### IntelliJ IDEA ###
++.idea/modules.xml
++.idea/jarRepositories.xml
++.idea/compiler.xml
++.idea/libraries/
++*.iws
++*.iml
++*.ipr
++
++### Eclipse ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++build/
++!**/src/main/**/build/
++!**/src/test/**/build/
++
++### VS Code ###
++.vscode/
++
++### Mac OS ###
++.DS_Store
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.idea/.gitignore	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.idea/encodings.xml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.idea/misc.xml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="23" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/.idea/vcs.xml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: docker-compose.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/docker-compose.yml b/docker-compose.yml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/docker-compose.yml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,50 @@
++services:
++  app:
++    image: fireflyiii/core:latest
++    hostname: app
++    container_name: firefly_iii_core
++    restart: always
++    volumes:
++      - firefly_iii_upload:/var/www/html/storage/upload
++    env_file: .env
++    networks:
++      - firefly_iii
++    ports:
++      - 80:8080
++    depends_on:
++      - db
++  db:
++    image: mariadb:lts
++    hostname: db
++    container_name: firefly_iii_db
++    restart: always
++    env_file: .db.env
++    networks:
++      - firefly_iii
++    volumes:
++      - firefly_iii_db:/var/lib/mysql
++  cron:
++    #
++    # To make this work, set STATIC_CRON_TOKEN in your .env file or as an environment variable and replace REPLACEME below
++    # The STATIC_CRON_TOKEN must be *exactly* 32 characters long
++    #
++    image: alpine
++    restart: always
++    container_name: firefly_iii_cron
++    env_file: .env
++    command: sh -c "
++      apk add tzdata
++      && ln -s /usr/share/zoneinfo/${TZ} /etc/localtime
++      | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/REPLACEME;echo\" 
++      | crontab - 
++      && crond -f -L /dev/stdout"
++    networks:
++      - firefly_iii
++
++volumes:
++   firefly_iii_upload:
++   firefly_iii_db:
++
++networks:
++  firefly_iii:
++    driver: bridge
+Index: edits
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/edits b/edits
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/edits	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,60 @@
++
++
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.ui.Select;
++
++public class TransferCreate {
++    private final WebDriver driver;
++
++    private By descriptionBy = By.name("description");
++    private By sourceAccountBy = By.name("source[]");
++    private By destinationAccountBy = By.name("destination[]");
++    private By amountBy = By.name("amount[]");
++    private Select budgetSelect;
++    private Select piggyBankSelect;
++    private Select billSelect;
++
++
++
++
++
++    TransferCreate(WebDriver driver){
++        this.driver = driver;
++        WebElement budgetElm = driver.findElement(By.name("budget[]"));
++        WebElement piggyBankElm = driver.findElement(By.name("piggy_bank[]"));
++        WebElement billElm = driver.findElement(By.name("bill[]"));
++        budgetSelect = new Select(budgetElm);
++        piggyBankSelect = new Select(piggyBankElm);
++        billSelect = new Select(billElm);
++    }
++
++    public TransferCreate createTransfer(String description, String source, String destination, String amount, String budget, String piggyBank, String bill){
++        driver.findElement(descriptionBy).click();
++        driver.findElement(descriptionBy).sendKeys(description);
++        driver.findElement(sourceAccountBy).click();
++        driver.findElement(sourceAccountBy).sendKeys(source);
++        driver.findElement(destinationAccountBy).click();
++        driver.findElement(destinationAccountBy).sendKeys(destination);
++
++        driver.findElement(amountBy).click();
++        driver.findElement(amountBy).sendKeys(amount);
++        if(budget!=null){
++            budgetSelect.selectByValue(budget);
++        }
++        if (piggyBank!=null) {
++            piggyBankSelect.selectByValue(piggyBank);
++        }
++        if (bill!=null){
++            billSelect.selectByValue(bill);
++        }
++
++
++
++
++        return new TransferCreate(driver);
++    }
++}
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/pom.xml	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>FireflyIIITesting</artifactId>
++    <version>1.0-SNAPSHOT</version>
++
++    <properties>
++        <maven.compiler.source>23</maven.compiler.source>
++        <maven.compiler.target>23</maven.compiler.target>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    </properties>
++
++
++    <dependencies>
++        <dependency>
++            <groupId>org.seleniumhq.selenium</groupId>
++            <artifactId>selenium-java</artifactId>
++            <version>4.27.0</version>
++        </dependency>
++        <dependency>
++            <groupId>io.rest-assured</groupId>
++            <artifactId>rest-assured</artifactId>
++            <version>5.5.0</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-engine</artifactId>
++            <version>5.9.0</version>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
++
++</project>
+\ No newline at end of file
+Index: src/main/java/org/example/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Account.java b/src/main/java/org/example/Account.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/Account.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,69 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++
++import java.time.Duration;
++import java.util.Objects;
++
++public class Account {
++    private final WebDriver driver;
++    String name;
++    String type;
++    int balance=0;
++    private By homepageBy = By.linkText("http://localhost");
++    private By nameInputBy = By.id("ffInput_name");
++    private By accountNumberBy = By.name("account_number");
++    private By openingBalanceBy = By.name("opening_balance");
++    private By openingBalanceDateBy = By.name("opening_balance_date");
++    private By submitButtonBy = By.className("btn-success");
++    private By successMessageBy = By.className("alert-success");
++    Account(WebDriver driver, String type){
++        this.driver =driver;
++        this.type = type;
++    }
++
++    public HomePage homePage(){
++        driver.findElement(homepageBy).click();
++        return new HomePage(driver);
++    }
++
++    public HomePage createAccount(String name,String accountNumber,String balance,String BalanceDate) throws InterruptedException {
++        Thread.sleep(1000);
++        if (Objects.equals(this.type, "asset")){
++
++            driver.findElement(nameInputBy).click();
++            driver.findElement(nameInputBy).clear();
++            driver.findElement(nameInputBy).sendKeys(name);
++            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++            driver.findElement(accountNumberBy).click();
++            driver.findElement(accountNumberBy).clear();
++            driver.findElement(accountNumberBy).sendKeys(accountNumber);
++            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++            driver.findElement(openingBalanceBy).click();
++            driver.findElement(openingBalanceBy).clear();
++            driver.findElement(openingBalanceBy).sendKeys(balance);
++            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++            driver.findElement(openingBalanceDateBy).click();
++            driver.findElement(openingBalanceDateBy).clear();
++            driver.findElement(openingBalanceDateBy).sendKeys(BalanceDate);
++            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++            driver.findElement(submitButtonBy).click();
++        }else{
++            driver.findElement(nameInputBy).click();
++            driver.findElement(nameInputBy).clear();
++            driver.findElement(nameInputBy).sendKeys(name);
++            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++            driver.findElement(submitButtonBy).click();
++        }
++        return new HomePage(driver);
++    }
++
++    public boolean accountCreated(String name){
++        return driver.findElement(successMessageBy).getText().equals(" new account "+"\""+name+"\""+" stored! ");
++    }
++
++
++
++
++}
+Index: src/main/java/org/example/CategoryCreatePage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/CategoryCreatePage.java b/src/main/java/org/example/CategoryCreatePage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/CategoryCreatePage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,36 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++
++import java.time.Duration;
++
++public class CategoryCreatePage {
++    private final WebDriver driver;
++    private By nameInputBy = By.id("ffInput_name");
++    private By submitButtonBy = By.className("btn-success");
++
++    public CategoryCreatePage(WebDriver driver) {
++        this.driver =driver;
++    }
++
++
++    public void createCategory(String categoryName){
++        driver.findElement(nameInputBy).click();
++        driver.findElement(nameInputBy).clear();
++        driver.findElement(nameInputBy).sendKeys(categoryName);
++        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
++        driver.findElement(submitButtonBy).click();
++    }
++
++
++
++
++
++
++
++
++
++
++
++}
+Index: src/main/java/org/example/HomePage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/HomePage.java b/src/main/java/org/example/HomePage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/HomePage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,109 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.Keys;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.PageFactory;
++import org.openqa.selenium.support.ui.LoadableComponent;
++
++import java.time.Duration;
++
++public class HomePage extends LoadableComponent {
++    private final String baseURL = "http://localhost";
++    private final WebDriver driver;
++    private final By createSideBarBy = By.className("fa-plus-circle");
++    private final By assetAccountBy = By.cssSelector("a[href='http://localhost/accounts/create/asset']");
++    private final By expenseAccountBy = By.linkText("http://localhost/accounts/create/expense");
++    private final By revenueAccountBy = By.linkText("http://localhost/accounts/create/revenue");
++    private final By billBy = By.linkText("http://localhost/bills/create");
++    private final By budgetBy = By.linkText("http://localhost/budgets/create");
++    private final By piggyBankBy = By.linkText("http://localhost/piggy-banks/create");
++    private final By transferBy = By.cssSelector("a[href='http://localhost/transactions/create/transfer']");
++    private final By categoryCreateButtonBy = By.cssSelector("a[href='http://localhost/categories/create']");
++    private final By withdrawalBy = By.linkText("http://localhost/transactions/create/withdrawal");
++    private final By budgetsBy = By.linkText("http://localhost/budgets");
++    private final By AccountBy = By.cssSelector("tr:nth-child(2) > td:nth-child(9) > div > button");
++    private final By deleteBy = By.cssSelector("div.box-footer > input");
++
++
++    public HomePage(WebDriver driver){
++        this.driver = driver;
++        PageFactory.initElements(driver,this);
++    }
++
++    @Override
++    protected void load(){
++        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
++        driver.get(baseURL);
++    }
++    @Override
++    protected void isLoaded() throws Error {
++        assert(driver.getTitle().contains("Home"));
++    }
++    public String getTitle(){
++        return driver.getTitle();
++    }
++    public Account createAccountButton(String type){
++        driver.findElement(createSideBarBy).click();
++        if (type.equals("asset")){
++            driver.findElement(assetAccountBy).click();
++            return new Account(driver,"asset");
++        } else {
++            if (type.equals("expense")){
++                driver.findElement(expenseAccountBy).click();
++                return new Account(driver,"expense");
++            }else{
++                driver.findElement(revenueAccountBy).click();
++                return new Account(driver,"revenue");
++            }
++
++        }
++    }
++    public CategoryCreatePage createCategory(){
++        driver.findElement(createSideBarBy).click();
++        driver.findElement(categoryCreateButtonBy).click();
++        return new CategoryCreatePage(driver);
++
++    }
++
++    public PiggyBankCreate createPiggyBank(){
++        driver.findElement(createSideBarBy).click();
++        driver.findElement(piggyBankBy).click();
++
++        return new PiggyBankCreate();
++    }
++
++    public TransferCreatePage createTransferButton(){
++        driver.findElement(createSideBarBy).click();
++        driver.findElement(transferBy).click();
++        return new TransferCreatePage(driver);
++    }
++
++    public Transfers enterTransfers() throws InterruptedException {
++        driver.get("http://localhost/transactions/transfers");
++        Thread.sleep(1000);
++        //driver.findElement(TransfersBy).click();
++        driver.findElement(By.cssSelector("a[href='http://localhost/transactions/transfer/all']")).click();
++        return new Transfers(driver);
++    }
++
++    public void deleteCreatedAccounts(){
++        driver.get("http://localhost/accounts/asset");
++        driver.findElement(AccountBy).click();
++        Actions action = new Actions(driver);
++        action.sendKeys(Keys.ARROW_DOWN).perform();
++        action.sendKeys(Keys.ARROW_DOWN).perform();
++        action.sendKeys(Keys.ENTER).perform();
++        driver.findElement(deleteBy).click();
++        driver.findElement(AccountBy).click();
++        action.sendKeys(Keys.ARROW_DOWN).perform();
++        action.sendKeys(Keys.ARROW_DOWN).perform();
++        action.sendKeys(Keys.ENTER).perform();
++        driver.findElement(deleteBy).click();
++    }
++
++
++
++
++}
+Index: src/main/java/org/example/LoginPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/LoginPage.java b/src/main/java/org/example/LoginPage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/LoginPage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,65 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.support.PageFactory;
++import org.openqa.selenium.support.ui.LoadableComponent;
++
++import java.time.Duration;
++
++
++public class LoginPage extends LoadableComponent {
++    private final String baseURL = "http://localhost/login";
++    private WebDriver driver;
++    private By emailFieldBy = By.name("email");
++    private By passwordFieldBy = By.name("password");
++    private By signInButtonBy = By.cssSelector("button[type='submit']");
++    private By resetPasswordButtonBy = By.cssSelector("a[href='http://localhost/password/reset']");
++    private By credentialsMessageBy = By.cssSelector(".alert-danger ul li");
++
++    public LoginPage(WebDriver driver) {
++        this.driver = driver;
++        PageFactory.initElements(driver,this);
++    }
++
++    @Override
++    protected void load(){
++        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
++        driver.get(baseURL);
++    }
++    @Override
++    protected void isLoaded() throws Error {
++        assert(driver.getTitle().contains("Login"));
++    }
++
++    public HomePage loginAsValidUser(String userName, String password) {
++        driver.findElement(emailFieldBy).sendKeys(userName);
++        driver.findElement(passwordFieldBy).sendKeys(password);
++        driver.findElement(signInButtonBy).click();
++
++        return new HomePage(driver);
++    }
++
++    public LoginPage loginAsInvalidUser(String userName, String password){
++        driver.findElement(emailFieldBy).sendKeys(userName);
++        driver.findElement(passwordFieldBy).sendKeys(password);
++        driver.findElement(signInButtonBy).click();
++
++        return new LoginPage(driver);
++    }
++    public ResetPasswordPage resetPassword(){
++        driver.findElement(resetPasswordButtonBy).click();
++        return new ResetPasswordPage(driver);
++
++    }
++    public String getTitle(){
++        String title = driver.getTitle();
++        return title;
++    }
++    public String invalidCredentialsMessage(){
++        return driver.findElement(credentialsMessageBy).getText();
++    }
++
++
++
++}
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/Main.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,17 @@
++package org.example;
++
++//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
++// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
++public class Main {
++    public static void main(String[] args) {
++        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
++        // to see how IntelliJ IDEA suggests fixing it.
++        System.out.printf("Hello and welcome!");
++
++        for (int i = 1; i <= 5; i++) {
++            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
++            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
++            System.out.println("i = " + i);
++        }
++    }
++}
+\ No newline at end of file
+Index: src/main/java/org/example/PiggyBankCreate.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/PiggyBankCreate.java b/src/main/java/org/example/PiggyBankCreate.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/PiggyBankCreate.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,4 @@
++package org.example;
++
++public class PiggyBankCreate {
++}
+Index: src/main/java/org/example/ResetPasswordPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/ResetPasswordPage.java b/src/main/java/org/example/ResetPasswordPage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/ResetPasswordPage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,24 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++
++public class ResetPasswordPage {
++    private WebDriver driver;
++    private By emailFieldBy = By.name("email");
++    private By resetButtonBy = By.cssSelector("button[type='submit']");
++    private By textSuccessBy = By.className("text-success");
++
++
++    ResetPasswordPage(WebDriver driver){
++        this.driver = driver;
++    }
++    public String reset(String email){
++        driver.findElement(emailFieldBy).sendKeys(email);
++        driver.findElement(resetButtonBy).click();
++        return driver.findElement(textSuccessBy).getText();
++    }
++
++
++
++}
+Index: src/main/java/org/example/TransferCreatePage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/TransferCreatePage.java b/src/main/java/org/example/TransferCreatePage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/TransferCreatePage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,157 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.Keys;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.PageFactory;
++
++import java.util.Objects;
++
++public class TransferCreatePage {
++
++    private final WebDriver driver;
++    private final Actions action ;
++    private By categoryInputBy = By.name("category[]");
++    private By notesBoxBy = By.name("notes[]");
++    private By successMessageBy = By.className("alert-success");
++    private By errorMessageBy = By.cssSelector(".alert-danger");
++    private By submitButtonBy = By.className("btn-success");
++
++
++    // Constructor
++    public TransferCreatePage(WebDriver driver) {
++        this.driver = driver;
++        this.action = new Actions(driver);
++        PageFactory.initElements(driver, this);
++    }
++
++    // Page Elements
++
++    // Account From Dropdown
++    @FindBy(name = "source[]")
++    private WebElement accountFromDropdown;
++
++    // Account To Dropdown
++    @FindBy(name = "destination[]")
++    private WebElement accountToDropdown;
++
++    // Amount Input Field
++    @FindBy(name = "amount[]")
++    private WebElement amountInput;
++
++    // Date Input Field
++    @FindBy(id = "date")
++    private WebElement dateInput;
++
++    // Description Input Field
++    @FindBy(name = "description[]")
++    private WebElement descriptionInput;
++
++
++
++    // Methods for Interactions
++
++    public void selectAccountFrom(String accountName) throws InterruptedException {
++        accountFromDropdown.click();
++        accountFromDropdown.clear();
++        accountFromDropdown.sendKeys(accountName);
++        Thread.sleep(3000);
++        action.sendKeys(Keys.ENTER).perform();
++        Thread.sleep(1000);
++    }
++
++    public void selectAccountTo(String accountName) throws InterruptedException {
++        accountToDropdown.click();
++        accountToDropdown.clear();
++        accountToDropdown.sendKeys(accountName);
++        Thread.sleep(3000);
++        action.sendKeys(Keys.ENTER).perform();
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++        Thread.sleep(1000);
++    }
++
++    public void enterAmount(String amount) {
++        amountInput.clear();
++        amountInput.sendKeys(amount);
++    }
++
++    public void enterDate(String date) {
++        dateInput.clear();
++        dateInput.sendKeys(date);
++    }
++
++    public void enterDescription(String description) {
++        descriptionInput.clear();
++        descriptionInput.sendKeys(description);
++    }
++
++
++    public TransferCreatePage createEmptyTransfer(){
++        driver.findElement(submitButtonBy).click();
++        return this;
++    }
++
++    // Method to Perform Full Transfer Creation
++    public TransferCreatePage createTransfer(String accountFrom, String accountTo, String amount, String date, String description) throws InterruptedException {
++
++        if (!Objects.equals(accountFrom, "")){
++            selectAccountFrom(accountFrom);
++            //action.sendKeys(Keys.ARROW_DOWN).perform();
++            //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++
++        }
++
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++
++        if (!Objects.equals(accountTo, "")){
++            selectAccountTo(accountTo);
++            //action.sendKeys(Keys.ARROW_DOWN).perform();
++
++        }
++        enterAmount(amount);
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++        Thread.sleep(1000);
++
++        enterDescription(description);
++        Thread.sleep(1000);
++
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++        driver.findElement(submitButtonBy).click();
++        Thread.sleep(1000);
++
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++        return this;
++    }
++
++    public TransferCreatePage createCategorizedTransfer(String accountFrom, String accountTo, String amount, String date, String description, String category) throws InterruptedException {
++        driver.findElement(categoryInputBy).click();
++        Thread.sleep(1000);
++        driver.findElement(categoryInputBy).sendKeys(category);
++        Thread.sleep(1000);
++        Actions actions = new Actions(driver);
++        actions.sendKeys(Keys.ENTER).perform();
++        Thread.sleep(1000);
++        return createTransfer(accountFrom,accountTo,amount,date,description);
++    }
++    public TransferCreatePage addNotesToTransfer(String notes){
++        driver.findElement(notesBoxBy).click();
++        driver.findElement(notesBoxBy).sendKeys(notes);
++        return this;
++    }
++
++
++
++    public boolean transferCreated(String name){
++        return driver.findElement(successMessageBy).getText().contains("Successfully created");
++    }
++
++
++    public boolean transferNotCreated(){
++        return driver.findElement(errorMessageBy).getText().contains("Error");
++    }
++
++}
++
+Index: src/main/java/org/example/TransferEditPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/TransferEditPage.java b/src/main/java/org/example/TransferEditPage.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/TransferEditPage.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,150 @@
++package org.example;
++
++import org.checkerframework.checker.units.qual.K;
++import org.openqa.selenium.By;
++import org.openqa.selenium.Keys;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.PageFactory;
++
++import javax.swing.*;
++
++public class TransferEditPage {
++    private final WebDriver driver;
++    Actions action ;
++    private By categoryInputBy = By.name("category[]");
++    private By notesBoxBy = By.name("notes[]");
++    private By successMessageBy = By.className("alert-success");
++    private By errorMessageBy = By.cssSelector(".alert-danger");
++    private By submitButtonBy = By.className("btn-success");
++
++
++    // Constructor
++    public TransferEditPage(WebDriver driver) {
++        this.driver = driver;
++        action = new Actions(driver);
++        PageFactory.initElements(driver, this);
++    }
++
++    // Page Elements
++
++    // Account From Dropdown
++    @FindBy(name = "source[]")
++    private WebElement accountFromDropdown;
++
++    // Account To Dropdown
++    @FindBy(name = "destination[]")
++    private WebElement accountToDropdown;
++
++    // Amount Input Field
++    @FindBy(name = "amount[]")
++    private WebElement amountInput;
++
++    // Date Input Field
++    @FindBy(name = "date[]")
++    private WebElement dateInput;
++
++    // Description Input Field
++    @FindBy(name = "description[]")
++    private WebElement descriptionInput;
++
++    @FindBy(name="category[]")
++    private WebElement categoryInput;
++
++    @FindBy(name="notes[]")
++    private WebElement notesBox;
++
++
++
++    public void selectAccountFrom(String accountName) throws InterruptedException {
++        accountFromDropdown.click();
++        accountFromDropdown.clear();
++        accountFromDropdown.sendKeys(accountName);
++        Thread.sleep(3000);
++        action.sendKeys(Keys.ENTER).perform();
++        Thread.sleep(1000);
++    }
++
++    public void selectAccountTo(String accountName) throws InterruptedException {
++        accountToDropdown.click();
++        accountToDropdown.clear();
++        accountToDropdown.sendKeys(accountName);
++        Thread.sleep(3000);
++        action.sendKeys(Keys.ENTER).perform();
++        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
++        Thread.sleep(1000);
++    }
++
++    public void enterAmount(String amount) {
++        amountInput.clear();
++        amountInput.sendKeys(amount);
++    }
++
++    public void enterDate(String date) {
++        dateInput.clear();
++        dateInput.sendKeys(date);
++    }
++
++
++
++    public TransferEditPage editDescription(String description){
++        descriptionInput.click();
++        descriptionInput.clear();
++        descriptionInput.sendKeys(description);
++        return this;
++    }
++
++    public TransferEditPage editSourceAccount(String name) throws InterruptedException {
++        selectAccountFrom(name);
++        return this;
++    }
++    public TransferEditPage editDestinationAccount(String name) throws InterruptedException {
++        selectAccountTo(name);
++        return this;
++    }
++    public TransferEditPage editTransferDate(String date,String time) throws InterruptedException {
++        dateInput.click();
++        dateInput.clear();
++        Thread.sleep(1000);
++        dateInput.sendKeys(date);
++        Thread.sleep(1000);
++        action.sendKeys(Keys.ARROW_RIGHT).perform();
++        Thread.sleep(1000);
++        dateInput.sendKeys(time);
++        return this;
++    }
++    public TransferEditPage editAmount(String amount){
++        amountInput.click();
++        amountInput.clear();
++        amountInput.sendKeys(amount);
++        return this;
++    }
++    public TransferEditPage editTransferCategory(String category) throws InterruptedException {
++        categoryInput.click();
++        categoryInput.clear();
++        Thread.sleep(1000);
++        categoryInput.sendKeys(category);
++        Thread.sleep(2000);
++        action.sendKeys(Keys.ENTER).perform();
++        Thread.sleep(1000);
++        return this;
++    }
++
++    public TransferEditPage editTransferNotes(String note) throws InterruptedException {
++        notesBox.click();
++        notesBox.clear();
++        Thread.sleep(2000);
++        notesBox.sendKeys(note);
++        Thread.sleep(2000);
++        return this;
++    }
++
++    public TransferInformation updateTransfer(){
++    driver.findElement(submitButtonBy).click();
++        return new TransferInformation(driver);
++    }
++
++
++}
+Index: src/main/java/org/example/TransferInformation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/TransferInformation.java b/src/main/java/org/example/TransferInformation.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/TransferInformation.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,48 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++
++public class TransferInformation {
++    private final WebDriver driver ;
++    private final By descriptionBy = By.cssSelector("div:nth-child(1) > div > div.box-body.no-padding > table > tbody > tr:nth-child(2) > td:nth-child(2)");
++    private final By dateBy = By.className("date-time");
++    private final By sourceAccountBy = By.cssSelector(" table > tbody > tr:nth-child(1) > td:nth-child(2) > a");
++    private final By destinationAccountBy = By.cssSelector("table > tbody > tr:nth-child(2) > td:nth-child(2) > a");
++    private final By amountBy = By.cssSelector("div:nth-child(2) > div > div.box-body.no-padding > table > tbody > tr:nth-child(3) > td:nth-child(2) > span");
++    private final By categoryBy = By.cssSelector("div:nth-child(4) > div > div > div.box-body.no-padding > table > tbody > tr:nth-child(2) > td:nth-child(2) > a");
++    private final By notesBy = By.cssSelector("td.markdown > p");
++    private By successMessageBy = By.className("alert-success");
++
++    TransferInformation(WebDriver driver){
++        this.driver = driver;
++    }
++
++
++
++    public String getDescription(){
++        return driver.findElement(descriptionBy).getText();
++    }
++    public String getDate(){
++        return driver.findElement(dateBy).getText();
++    }
++    public String getSourceAcount(){
++        return driver.findElement(sourceAccountBy).getText();
++    }
++    public String getDestinationAccount(){
++        return driver.findElement(destinationAccountBy).getText();
++    }
++    public String getAmount(){
++        return driver.findElement(amountBy).getText();
++    }
++    public String getCategory(){
++        return driver.findElement(categoryBy).getText();
++    }
++    public String getNotes(){
++        return driver.findElement(notesBy).getText();
++    }
++
++    public boolean transferEditSuccess(){
++        return driver.findElement(successMessageBy).getText().contains("Updated transfer");
++    }
++}
+Index: src/main/java/org/example/Transfers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Transfers.java b/src/main/java/org/example/Transfers.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/main/java/org/example/Transfers.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,26 @@
++package org.example;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.Keys;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.interactions.Actions;
++
++public class Transfers {
++    private final WebDriver driver;
++    public Transfers(WebDriver driver) {
++        this.driver = driver;
++    }
++
++
++    public TransferEditPage pickTransfer(String transferName) throws InterruptedException {
++        By transferBy = By.cssSelector("a[title='"+transferName+"']");
++        driver.findElement(transferBy).click();
++        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/section[2]/div[1]/div[1]/div/div[1]/div/button")).click();
++        Actions action = new Actions(driver);
++        action.sendKeys(Keys.ARROW_DOWN).perform();
++        Thread.sleep(1000);
++        action.sendKeys(Keys.ENTER).perform();
++        Thread.sleep(1000);
++        return new TransferEditPage(driver);
++    }
++}
+Index: src/test/java/API/AccountDeleteAPITest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/API/AccountDeleteAPITest.java b/src/test/java/API/AccountDeleteAPITest.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/test/java/API/AccountDeleteAPITest.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,55 @@
++package API;
++
++
++import io.restassured.RestAssured;
++import io.restassured.response.Response;
++
++import static io.restassured.RestAssured.*;
++        import static org.hamcrest.Matchers.*;
++
++        import io.restassured.specification.RequestSpecification;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.openqa.selenium.devtools.v129.network.model.Request;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++
++public class AccountDeleteAPITest {
++    String personalToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjRlYzQxNzhiNTc1ZWYzZjE3NzdmMWJmYjFkZGRjNDIwMDk4Y2E4ZDRhNWMxNjI1YjM3NzdiMDZiNzIxYmJmNDlmZmQ4ODg5ZmZmMTdiNDkiLCJpYXQiOjE3MzcwMzY5NDIuNTQxODMzLCJuYmYiOjE3MzcwMzY5NDIuNTQxODM2LCJleHAiOjE3Njg1NzI5NDIuMjE4NzU5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Up_bEzrOPxPk8txc3Kr82YDed6i1VBharpFBl8HzVcJkvdLEUb11_l3ZlvngfcZ7SRzBUZxtOfrYQcE6d6n-Z1W_V9GjdzM2HZQcE5duTm949rXLlWLNT7EAq1_gXUCaURm_nAPYGRCna8VIxCltRXh6Wvc91jXM3n-F8dp31URwZVb483lzidZyZ6jTqsARyUwdAeO64eR33ZG1BKDBPtCja-Z_XtmS1sewFJYbG74bvm7tyK15nptnPbSVng2dPhLYp5zZSlipnyB1DzRK05uXQ43j-0mwdz8T2lumDzbiqdJBX6T3nJZ9Yu45hquvKFBJToRYNMWVUsKQglKHYU1km0ZOVtV_-NIr4yBN4hOuSSnzgbD1FZjHW_qLobD9fA-3StPcAbEeQlHng4nCOcvBWszh0pMHLbCkcdy4aVFHjRI9WeUKD6ROvREBVVxtHcdW0-WoFyKzupQKtO2eHwnVkSKoNgdQLyq9LufosxZIHpNTwwNkqkne2nXWiC97o6ju_Yzg89A4iztgefVFYhGm8YwmwTrEkGVvcdoFwX2FkEzT1dFp7SfCfG7tnJ4-QwwCRFctUXeCiOy_NMil6f0fhfx-Xtkir7D770RX3jTOw1zCiYVT99mkdummzOXCgiOXrKrsGRfOplkio05Xi1-2RbxOg4XgEtl4J23udj0";
++    String AccountToDelete = "temporaryAccount";
++
++
++    @BeforeEach
++    public void setup() {
++        RestAssured.baseURI = "http://localhost:80/api";
++        //RestAssured.port = 80; // Adjust port as needed
++    }
++
++
++
++    @Test
++    public void deleteValidAccount(){
++        RequestSpecification response = given()
++                .header("Accept", "application/json")
++                .header("Content-Type","application/json")
++                .header("Authorization"," Bearer "+personalToken);
++        response.when().delete("/v1/accounts/212").then().statusCode(204);
++    }
++
++    @Test
++    public void deleteNonExistentAccount(){
++        RequestSpecification response = given()
++                .header("Accept", "application/json")
++                .header("Content-Type","application/json")
++                .header("Authorization"," Bearer "+personalToken);
++        response.when().delete("/v1/accounts/999").then().statusCode(404);
++    }
++
++
++}
++
+Index: src/test/java/API/TransferDeleteAPITest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/API/TransferDeleteAPITest.java b/src/test/java/API/TransferDeleteAPITest.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/test/java/API/TransferDeleteAPITest.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,55 @@
++package API;
++
++
++import io.restassured.RestAssured;
++import io.restassured.response.Response;
++
++import static io.restassured.RestAssured.*;
++import static org.hamcrest.Matchers.*;
++
++import io.restassured.specification.RequestSpecification;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.openqa.selenium.devtools.v129.network.model.Request;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++
++public class TransferDeleteAPITest {
++    String personalToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjRlYzQxNzhiNTc1ZWYzZjE3NzdmMWJmYjFkZGRjNDIwMDk4Y2E4ZDRhNWMxNjI1YjM3NzdiMDZiNzIxYmJmNDlmZmQ4ODg5ZmZmMTdiNDkiLCJpYXQiOjE3MzcwMzY5NDIuNTQxODMzLCJuYmYiOjE3MzcwMzY5NDIuNTQxODM2LCJleHAiOjE3Njg1NzI5NDIuMjE4NzU5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Up_bEzrOPxPk8txc3Kr82YDed6i1VBharpFBl8HzVcJkvdLEUb11_l3ZlvngfcZ7SRzBUZxtOfrYQcE6d6n-Z1W_V9GjdzM2HZQcE5duTm949rXLlWLNT7EAq1_gXUCaURm_nAPYGRCna8VIxCltRXh6Wvc91jXM3n-F8dp31URwZVb483lzidZyZ6jTqsARyUwdAeO64eR33ZG1BKDBPtCja-Z_XtmS1sewFJYbG74bvm7tyK15nptnPbSVng2dPhLYp5zZSlipnyB1DzRK05uXQ43j-0mwdz8T2lumDzbiqdJBX6T3nJZ9Yu45hquvKFBJToRYNMWVUsKQglKHYU1km0ZOVtV_-NIr4yBN4hOuSSnzgbD1FZjHW_qLobD9fA-3StPcAbEeQlHng4nCOcvBWszh0pMHLbCkcdy4aVFHjRI9WeUKD6ROvREBVVxtHcdW0-WoFyKzupQKtO2eHwnVkSKoNgdQLyq9LufosxZIHpNTwwNkqkne2nXWiC97o6ju_Yzg89A4iztgefVFYhGm8YwmwTrEkGVvcdoFwX2FkEzT1dFp7SfCfG7tnJ4-QwwCRFctUXeCiOy_NMil6f0fhfx-Xtkir7D770RX3jTOw1zCiYVT99mkdummzOXCgiOXrKrsGRfOplkio05Xi1-2RbxOg4XgEtl4J23udj0";
++    String transferToDelete = "brothersTransfer";
++
++
++    @BeforeEach
++    public void setup() {
++        RestAssured.baseURI = "http://localhost:80/api";
++        //RestAssured.port = 80; // Adjust port as needed
++    }
++
++
++
++    @Test
++    public void deleteValidTransfer(){
++        RequestSpecification response = given()
++                .header("Accept", "application/json")
++                .header("Content-Type","application/json")
++                .header("Authorization"," Bearer "+personalToken);
++        response.when().delete("/v1/transactions/167").then().statusCode(204);
++    }
++
++    @Test
++    public void deleteNonExistentTransfer(){
++        RequestSpecification response = given()
++                .header("Accept", "application/json")
++                .header("Content-Type","application/json")
++                .header("Authorization"," Bearer "+personalToken);
++        response.when().delete("/v1/transactions/999").then().statusCode(404);
++    }
++
++
++}
++
+Index: src/test/java/selenium/LoginPageTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/selenium/LoginPageTest.java b/src/test/java/selenium/LoginPageTest.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/test/java/selenium/LoginPageTest.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,59 @@
++package selenium;
++
++import org.example.HomePage;
++import org.example.LoginPage;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++public class LoginPageTest {
++    private WebDriver driver;
++    private LoginPage loginPage;
++    private static final String loginEmail = "ameertechnion1998@gmail.com";
++    private static final String loginPassword = "AmeerFadeAws250298#";
++    private static final String invalidLoginEmail = "00000@00000.com";
++    private static final String invalidCredentialsMessage = "These credentials do not match our records.";
++    private static final String resetPasswordSuccessMessage = "Thank you. If an account exists with this email address, you will find instructions in your inbox.";
++    @BeforeEach
++    public void setUp(){
++        driver = new ChromeDriver();
++        driver.manage().window().maximize();
++        loginPage = new LoginPage(driver);
++        loginPage.get();
++    }
++
++
++
++    @Test
++    public void testValidLogin() {
++        HomePage home = loginPage.loginAsValidUser(loginEmail, loginPassword);
++        assertTrue(home.getTitle().contains("Home"));
++    }
++
++    @Test
++    public void testInValidLogin(){
++        LoginPage page = loginPage.loginAsInvalidUser(invalidLoginEmail, loginPassword);
++        assertTrue(page.getTitle().contains("Login"));
++        assertEquals(invalidCredentialsMessage, page.invalidCredentialsMessage());
++    }
++
++    @Test
++    public void testResetPassWord(){
++         assertEquals(resetPasswordSuccessMessage,
++                 loginPage.resetPassword().reset(loginEmail));
++    }
++
++    @AfterEach
++    public void tearDown() {
++        driver.quit();
++    }
++
++
++
++
++}
+Index: src/test/java/selenium/TransferCreateTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/selenium/TransferCreateTest.java b/src/test/java/selenium/TransferCreateTest.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/test/java/selenium/TransferCreateTest.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,217 @@
++package selenium;
++
++import org.example.*;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++
++public class TransferCreateTest {
++    private WebDriver driver;
++    LoginPage loginPage;
++    HomePage homePage;
++    private static final String setUpErrorMessage ="setUp Failed";
++    private static final String expectedPageTitle = "Spotify Clone";
++    private static final String loginEmail = "ameertechnion1998@gmail.com";
++    private static final String loginPassword = "AmeerFadeAws250298#";
++    private static final String accountType = "asset";
++    private static final String sourceAccountName = "hapoalim";
++    private static final String sourceAccountNumber = "1";
++    private static final String destinationAccountName = "mercantel";
++    private static final String destinationAccountNumber = "2";
++    private static final String balance ="10000";
++    private static final String transferAmount ="1000";
++    private static final String transferEditAmount ="100";
++    private static final String transferDescription ="new Transfer Created";
++    private static final String transferEditDescription = "editedDescription";
++    private static final String transferCategory ="mobile";
++    private static final String transferEditCategory ="Studies";
++    private static final String transferNewNotes ="new added notes";
++    private static final String date = "16/01/2025";
++
++
++    @BeforeEach
++    public void setUp(){
++        driver = new ChromeDriver();
++        driver.manage().window().maximize();
++        loginPage = new LoginPage(driver);
++        homePage = new HomePage(driver);
++        loginPage.get();
++    }
++
++
++    @Test
++    public void emptyTransferCreate() {
++        try {
++
++
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createEmptyTransfer();
++            assertTrue(transferCreatePage.transferNotCreated());
++        } catch (Exception _) {
++        }
++    }
++
++    @Test
++    public void validTransferCreate() {
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "transfer all balance");
++            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
++
++        } catch (InterruptedException _){
++
++        }
++    }
++    @Test
++    public void transferWithNoDescription(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "");
++            assertTrue(transferCreatePage.transferNotCreated());
++        } catch (Exception _) {
++
++        }
++    }
++
++    @Test
++    public void transferWithMissingSourceAccount(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer("", destinationAccountName, balance, date, "No Source Account Transfer");
++            assertTrue(transferCreatePage.transferCreated("No Source Account Transfer"));
++        } catch (InterruptedException _) {
++
++        }
++    }
++    @Test
++    public void transferWithMissingDestinationAccount(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer(destinationAccountName, "", balance, date, "No Destination Account Transfer");
++            assertTrue(transferCreatePage.transferCreated("No Destination Account Transfer"));
++        } catch (InterruptedException _) {
++
++        }
++    }
++        /// ////////////// new tests
++    @Test
++    public void transferWithNonExistanceAccounts(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer("unrealAccount", "AccountNotAvailable", balance, date, "transfer all balance");
++            assertTrue(transferCreatePage.transferNotCreated());
++
++        } catch (InterruptedException _){
++
++        }
++    }
++
++    @Test
++    public void transferZeroOrNegativeAmount(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++            accountCreatePage = homePage.createAccountButton(accountType);
++            accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, "-2000", date, "transfer all balance");
++            assertTrue(transferCreatePage.transferNotCreated());
++            transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, "0", date, "transfer all balance");
++            assertTrue(transferCreatePage.transferNotCreated());
++
++
++        } catch (InterruptedException _){
++
++        }
++    }
++
++    @Test
++    public void transferCategorize(){
++        try {
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++
++            accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++
++            CategoryCreatePage category = homePage.createCategory();
++            category.createCategory(transferEditCategory);
++
++
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.createCategorizedTransfer(sourceAccountName, destinationAccountName, "2000", date, "transfer",transferEditCategory);
++            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
++        } catch (InterruptedException _){
++
++        }
++    }
++
++    @Test
++    public void notedTransferCreate(){
++        try {
++
++
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++
++            Account accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++
++            accountCreatePage = homePage.createAccountButton(accountType);
++            homePage = accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
++
++            TransferCreatePage transferCreatePage = homePage.createTransferButton();
++            transferCreatePage.addNotesToTransfer(transferNewNotes);
++
++            transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "transfer all balance");
++            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
++        }catch (Exception _){
++
++        }
++    }
++
++
++
++    @AfterEach
++    public void tearDown(){
++        homePage.deleteCreatedAccounts();
++        driver.quit();
++    }
++
++}
+Index: src/test/java/selenium/TransferEditTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/selenium/TransferEditTest.java b/src/test/java/selenium/TransferEditTest.java
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/src/test/java/selenium/TransferEditTest.java	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,157 @@
++package selenium;
++
++import org.example.*;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++
++
++public class TransferEditTest {
++
++    private WebDriver driver;
++    LoginPage loginPage;
++    Transfers allTransfers;
++    HomePage homePage;
++    private static final String setUpErrorMessage ="setUp Failed";
++    private static final String expectedPageTitle = "Spotify Clone";
++    private static final String loginEmail = "ameertechnion1998@gmail.com";
++    private static final String loginPassword = "AmeerFadeAws250298#";
++    private static final String accountType = "asset";
++    private static final String sourceAccountName = "hapoalim";
++    private static final String sourceAccountNumber = "1";
++    private static final String destinationAccountName = "mercantel";
++    private static final String destinationAccountNumber = "2";
++    private static final String balance ="10000";
++    private static final String transferAmount ="1000";
++    private static final String transferEditAmount ="100";
++    private static final String transferDescription ="new Transfer Created";
++    private static final String transferEditDescription = "editedDescription";
++    private static final String transferCategory ="mobile";
++    private static final String transferEditCategory ="Studies";
++    private static final String transferNewNotes ="new added notes";
++    private static final String date = "16/01/2025";
++
++    @BeforeEach
++    public void setUp(){
++        try {
++
++
++            driver = new ChromeDriver();
++            driver.manage().window().maximize();
++            loginPage = new LoginPage(driver);
++            homePage = new HomePage(driver);
++            loginPage.get();
++
++
++            HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
++
++            Account sourceAccount = homePage.createAccountButton(accountType);
++            homePage = sourceAccount.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
++
++            Account destinationAccount = homePage.createAccountButton(accountType);
++            homePage = destinationAccount.createAccount(destinationAccountName,destinationAccountNumber,balance,date);
++
++            TransferCreatePage newTransfer = homePage.createTransferButton();
++            newTransfer.createCategorizedTransfer(sourceAccountName,destinationAccountName,transferAmount,transferAmount,transferDescription,transferCategory);
++
++
++        }catch (Exception _){
++            System.out.println(setUpErrorMessage);
++        }
++    }
++
++
++    @Test
++    public void editAllFields() throws InterruptedException {
++        allTransfers =  homePage.enterTransfers();
++        TransferEditPage editTransfer = allTransfers.pickTransfer(transferDescription);
++
++        editTransfer.editDescription(transferEditDescription);
++        editTransfer.editSourceAccount(sourceAccountName);
++        editTransfer.editDestinationAccount(destinationAccountName);
++        editTransfer.editAmount(transferAmount);
++        editTransfer.editTransferCategory(transferEditCategory);
++        editTransfer.editTransferNotes(transferNewNotes);
++
++
++        TransferInformation transfer = editTransfer.updateTransfer();
++        assertTrue(transfer.transferEditSuccess());
++        assertEquals(transferEditDescription,transfer.getDescription());
++        assertEquals(sourceAccountName,transfer.getSourceAcount());
++        assertEquals(destinationAccountName,transfer.getDestinationAccount());
++        assertEquals("₪1,000.00",transfer.getAmount());
++        assertEquals(transferEditCategory,transfer.getCategory());
++        assertEquals(transferNewNotes,transfer.getNotes());
++    }
++
++
++    @Test
++    public void editTransferAmount(){
++
++        try {
++            allTransfers =  homePage.enterTransfers();
++            TransferEditPage editTransfer = allTransfers.pickTransfer(transferDescription);
++            editTransfer.editAmount(transferEditAmount);
++            TransferInformation transfer = editTransfer.updateTransfer();
++            assertTrue(transfer.transferEditSuccess());
++            assertEquals("₪100.00",transfer.getAmount());
++
++
++
++        }catch (Exception _){
++
++        }
++    }
++
++    @Test
++    public void editDescription(){
++        try {
++            allTransfers =  homePage.enterTransfers();
++            TransferEditPage editTransfer = allTransfers.pickTransfer(transferDescription);
++            editTransfer.editDescription(transferEditDescription);
++            TransferInformation transfer = editTransfer.updateTransfer();
++            assertTrue(transfer.transferEditSuccess());
++            assertEquals(transferEditDescription,transfer.getDescription());
++
++        }catch (Exception _){
++
++        }
++    }
++    @Test
++    public void editNotes(){
++
++        try {
++
++            allTransfers =  homePage.enterTransfers();
++            TransferEditPage editTransfer = allTransfers.pickTransfer(transferDescription);
++            editTransfer.editTransferNotes(transferNewNotes);
++            TransferInformation transfer = editTransfer.updateTransfer();
++
++
++            assertTrue(transfer.transferEditSuccess());
++            assertEquals(transferNewNotes,transfer.getNotes());
++        }catch (Exception _){
++
++        }
++
++
++    }
++
++    @AfterEach
++    public void tearDown(){
++        homePage.deleteCreatedAccounts();
++        driver.quit();
++
++
++    }
++
++
++
++
++}
+Index: token
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/token b/token
+new file mode 100644
+--- /dev/null	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
++++ b/token	(revision 987c7101fe3cc3566da690cc5b74863a1cf4c6b5)
+@@ -0,0 +1,1 @@
++eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjRlYzQxNzhiNTc1ZWYzZjE3NzdmMWJmYjFkZGRjNDIwMDk4Y2E4ZDRhNWMxNjI1YjM3NzdiMDZiNzIxYmJmNDlmZmQ4ODg5ZmZmMTdiNDkiLCJpYXQiOjE3MzcwMzY5NDIuNTQxODMzLCJuYmYiOjE3MzcwMzY5NDIuNTQxODM2LCJleHAiOjE3Njg1NzI5NDIuMjE4NzU5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Up_bEzrOPxPk8txc3Kr82YDed6i1VBharpFBl8HzVcJkvdLEUb11_l3ZlvngfcZ7SRzBUZxtOfrYQcE6d6n-Z1W_V9GjdzM2HZQcE5duTm949rXLlWLNT7EAq1_gXUCaURm_nAPYGRCna8VIxCltRXh6Wvc91jXM3n-F8dp31URwZVb483lzidZyZ6jTqsARyUwdAeO64eR33ZG1BKDBPtCja-Z_XtmS1sewFJYbG74bvm7tyK15nptnPbSVng2dPhLYp5zZSlipnyB1DzRK05uXQ43j-0mwdz8T2lumDzbiqdJBX6T3nJZ9Yu45hquvKFBJToRYNMWVUsKQglKHYU1km0ZOVtV_-NIr4yBN4hOuSSnzgbD1FZjHW_qLobD9fA-3StPcAbEeQlHng4nCOcvBWszh0pMHLbCkcdy4aVFHjRI9WeUKD6ROvREBVVxtHcdW0-WoFyKzupQKtO2eHwnVkSKoNgdQLyq9LufosxZIHpNTwwNkqkne2nXWiC97o6ju_Yzg89A4iztgefVFYhGm8YwmwTrEkGVvcdoFwX2FkEzT1dFp7SfCfG7tnJ4-QwwCRFctUXeCiOy_NMil6f0fhfx-Xtkir7D770RX3jTOw1zCiYVT99mkdummzOXCgiOXrKrsGRfOplkio05Xi1-2RbxOg4XgEtl4J23udj0
+\ No newline at end of file
