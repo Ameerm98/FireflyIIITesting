@@ -48,21 +48,12 @@ public class TransferEditTest {
     @BeforeEach
     public void setUp(){
         try {
-
-
-            driver = new ChromeDriver();
+            driver = DriverFactory.getDriver();
             driver.manage().window().maximize();
             loginPage = new LoginPage(driver);
             homePage = new HomePage(driver);
             loginPage.get();
 
-            try {
-                Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-                WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
-                visitSiteButton.click();
-            } catch (TimeoutException err) {
-                System.out.println("Ngrok warning page was not loaded");
-            }
 
 
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
@@ -161,9 +152,12 @@ public class TransferEditTest {
 
     @AfterEach
     public void tearDown(){
-        homePage.deleteCreatedAccounts();
-        driver.quit();
+        try {
+            homePage.deleteCreatedAccounts();
+            driver.quit();
+        }catch (Exception _){
 
+        }
 
     }
 

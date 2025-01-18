@@ -141,8 +141,9 @@ public class TransferEditPage {
         return this;
     }
 
-    public TransferInformation updateTransfer(){
+    public TransferInformation updateTransfer() throws InterruptedException {
     driver.findElement(submitButtonBy).click();
+    Thread.sleep(1000);
         return new TransferInformation(driver);
     }
 

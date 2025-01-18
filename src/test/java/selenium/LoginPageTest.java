@@ -34,7 +34,6 @@ public class LoginPageTest {
     public void setUp(){
         driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
-        driver.get(baseURL);
         loginPage = new LoginPage(driver);
         loginPage.get();
     }
@@ -63,8 +62,6 @@ public class LoginPageTest {
 
     @AfterEach
     public void tearDown() {
-
-
         driver.quit();
     }
 

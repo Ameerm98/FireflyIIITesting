@@ -53,20 +53,28 @@ public class HomePage extends LoadableComponent {
         return driver.getTitle();
     }
     public Account createAccountButton(String type){
-        driver.findElement(createSideBarBy).click();
-        if (type.equals("asset")){
-            driver.findElement(assetAccountBy).click();
-            return new Account(driver,"asset");
-        } else {
-            if (type.equals("expense")){
-                driver.findElement(expenseAccountBy).click();
-                return new Account(driver,"expense");
-            }else{
-                driver.findElement(revenueAccountBy).click();
-                return new Account(driver,"revenue");
+        try {
+            driver.findElement(createSideBarBy).click();
+            Thread.sleep(1000);
+            if (type.equals("asset")){
+                driver.findElement(assetAccountBy).click();
+                Thread.sleep(1000);
+                return new Account(driver,"asset");
+            } else {
+                if (type.equals("expense")){
+                    driver.findElement(expenseAccountBy).click();
+                    return new Account(driver,"expense");
+                }else{
+                    driver.findElement(revenueAccountBy).click();
+                    return new Account(driver,"revenue");
+                }
+
             }
 
+        } catch (Exception _) {
+
         }
+        return null;
     }
     public CategoryCreatePage createCategory(){
         driver.findElement(createSideBarBy).click();
@@ -84,25 +92,45 @@ public class HomePage extends LoadableComponent {
 
     public Transfers enterTransfers() throws InterruptedException {
         driver.get(baseURL+"/transactions/transfers");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         //driver.findElement(TransfersBy).click();
         driver.findElement(By.cssSelector("a[href='"+baseURL+"/transactions/transfer/all']")).click();
         return new Transfers(driver);
     }
 
-    public void deleteCreatedAccounts(){
+    public void deleteCreatedAccounts() throws InterruptedException {
         driver.get(baseURL+"/accounts/asset");
+
         driver.findElement(AccountBy).click();
+        Thread.sleep(2000);
         Actions action = new Actions(driver);
         action.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+
         action.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+
         action.sendKeys(Keys.ENTER).perform();
+        Thread.sleep(2000);
+
         driver.findElement(deleteBy).click();
+        Thread.sleep(2000);
+
         driver.findElement(AccountBy).click();
+        Thread.sleep(2000);
+
         action.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+
         action.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+
         action.sendKeys(Keys.ENTER).perform();
+        Thread.sleep(2000);
+
         driver.findElement(deleteBy).click();
+        Thread.sleep(2000);
+
     }
 
 

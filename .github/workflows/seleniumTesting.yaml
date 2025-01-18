@@ -45,7 +45,7 @@ jobs:
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
           mvn clean
-          mvn test -Dtest=**/selenium/LoginPageTest
+          mvn test -Dtest=**/selenium/*
           
           # Tear down grid if exists
           docker stop grid_container || true
@@ -74,6 +74,7 @@ jobs:
           export BROWSER=firefox
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
+          mvn clean
           mvn test -Dtest=**/selenium/*
           
           # Tear down grid if exists
