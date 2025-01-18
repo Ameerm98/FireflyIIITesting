@@ -23,6 +23,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LoginPageTest {
     private WebDriver driver;
     private LoginPage loginPage;
+    private final String baseURL = "https://0217-2a06-c701-9ca4-ad00-9cc3-5696-30ab-de32.ngrok-free.app";
+
     private static final String loginEmail = "ameertechnion1998@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
     private static final String invalidLoginEmail = "00000@00000.com";
@@ -31,6 +33,8 @@ public class LoginPageTest {
     @BeforeEach
     public void setUp(){
         driver = DriverFactory.getDriver();
+        driver.manage().window().maximize();
+        driver.get(baseURL);
         loginPage = new LoginPage(driver);
         loginPage.get();
     }
