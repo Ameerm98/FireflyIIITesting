@@ -33,9 +33,14 @@ public class LoginPageTest {
     @BeforeEach
     public void setUp(){
         driver = DriverFactory.getDriver();
+        assert(driver!=null);
         driver.manage().window().maximize();
         driver.get(baseURL);
+        assert(driver!=null);
+
         loginPage = new LoginPage(driver);
+        assert(loginPage!=null);
+
         loginPage.get();
     }
 
