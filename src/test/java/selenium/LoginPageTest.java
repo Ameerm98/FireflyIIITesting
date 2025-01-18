@@ -40,7 +40,8 @@ public class LoginPageTest {
 
         loginPage = new LoginPage(driver);
         assert(loginPage!=null);
-
+        int x=2;
+        assert(x==3);
         loginPage.get();
     }
 

@@ -44,6 +44,7 @@ jobs:
           export BROWSER=chrome
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
+          mvn clear
           mvn test -Dtest=**/selenium/*
           
           # Tear down grid if exists
