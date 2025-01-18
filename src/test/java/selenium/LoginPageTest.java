@@ -31,8 +31,7 @@ public class LoginPageTest {
     @BeforeEach
     public void setUp(){
         driver = DriverFactory.getDriver();
-        loginPage = new LoginPage(driver);
-        loginPage.get();
+
 
     }
 
@@ -40,6 +39,8 @@ public class LoginPageTest {
 
     @Test
     public void testValidLogin() {
+        loginPage = new LoginPage(driver);
+        loginPage.get();
         HomePage home = loginPage.loginAsValidUser(loginEmail, loginPassword);
         assertTrue(home.getTitle().contains("Home"));
     }
