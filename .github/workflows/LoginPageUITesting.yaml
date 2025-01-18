@@ -1,4 +1,4 @@
-name: UI testing
+name: Login Page UI Testing
 
 on:
   workflow_dispatch:
@@ -45,7 +45,7 @@ jobs:
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
           mvn clean
-          mvn test -Dtest=**/selenium/*
+          mvn test -Dtest=**/selenium/LoginPageTest
           
           # Tear down grid if exists
           docker stop grid_container || true
@@ -75,7 +75,7 @@ jobs:
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
           mvn clean
-          mvn test -Dtest=**/selenium/*
+          mvn test -Dtest=**/selenium/LoginPageTest
           
           # Tear down grid if exists
           docker stop grid_container || true
