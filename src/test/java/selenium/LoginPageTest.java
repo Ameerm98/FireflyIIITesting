@@ -1,5 +1,6 @@
 package selenium;
 
+import org.example.DriverFactory;
 import org.example.HomePage;
 import org.example.LoginPage;
 import org.junit.jupiter.api.AfterEach;
@@ -29,8 +30,7 @@ public class LoginPageTest {
     private static final String resetPasswordSuccessMessage = "Thank you. If an account exists with this email address, you will find instructions in your inbox.";
     @BeforeEach
     public void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = DriverFactory.getDriver();
         loginPage = new LoginPage(driver);
         loginPage.get();
 
