@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
+
 public class Transfers {
     private final WebDriver driver;
     public Transfers(WebDriver driver) {
@@ -13,6 +15,7 @@ public class Transfers {
 
 
     public TransferEditPage pickTransfer(String transferName) throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         By transferBy = By.cssSelector("a[title='"+transferName+"']");
         driver.findElement(transferBy).click();
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/section[2]/div[1]/div[1]/div/div[1]/div/button")).click();
