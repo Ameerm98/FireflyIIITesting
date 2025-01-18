@@ -30,10 +30,10 @@ public class LoginPage extends LoadableComponent {
 
     @Override
     protected void load(){
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get(baseURL+"/login");
         try {
-            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
             visitSiteButton.click();
         } catch (TimeoutException err) {
