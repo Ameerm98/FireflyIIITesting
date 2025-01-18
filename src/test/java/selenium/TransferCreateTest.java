@@ -56,8 +56,6 @@ public class TransferCreateTest {
     @Test
     public void emptyTransferCreate() {
         try {
-
-
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
             Account accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);

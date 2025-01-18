@@ -30,7 +30,7 @@ public class LoginPage extends LoadableComponent {
 
     @Override
     protected void load(){
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.driver.get(baseURL+"/login");
         try {
             Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));

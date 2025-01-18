@@ -35,7 +35,7 @@ public class HomePage extends LoadableComponent {
 
     @Override
     protected void load(){
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(baseURL);
         try {
             Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(3));
