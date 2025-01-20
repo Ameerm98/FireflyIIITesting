@@ -19,7 +19,7 @@ public class TransferEditTest {
     HomePage homePage;
     private static final String setUpErrorMessage ="setUp Failed";
     private static final String expectedPageTitle = "Spotify Clone";
-    private static final String loginEmail = "ameertechnion1998@gmail.com";
+    private static final String loginEmail = "ameerfade981@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
     private static final String accountType = "asset";
     private static final String sourceAccountName = "hapoalim";
@@ -34,7 +34,7 @@ public class TransferEditTest {
     private static final String transferCategory ="mobile";
     private static final String transferEditCategory ="Studies";
     private static final String transferNewNotes ="new added notes";
-    private static final String date = "16/01/2025";
+    private static final String date = "21/01/2025";
 
     @BeforeEach
     public void setUp(){
