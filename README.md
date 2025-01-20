@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/firefly-iii/firefly-iii/develop/.github/assets/img/logo-small.png" align="center" width="30%">
 </p>
-<p align="center"><h1 align="center">FIREFLY III TESTING</h1></p>
+<p align="center"><h1 align="center">Firefly III Testing</h1></p>
 <p align="center">
 	<em>Empowering Secure Financial Transfers with Robust Testing</em>
 </p>
