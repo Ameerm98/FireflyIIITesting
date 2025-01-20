@@ -23,9 +23,6 @@ public class TransferInformation {
     public String getDescription(){
         return driver.findElement(descriptionBy).getText();
     }
-    public String getDate(){
-        return driver.findElement(dateBy).getText();
-    }
     public String getSourceAcount(){
         return driver.findElement(sourceAccountBy).getText();
     }

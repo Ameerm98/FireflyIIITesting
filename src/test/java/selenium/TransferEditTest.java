@@ -4,16 +4,7 @@ import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -58,10 +49,10 @@ public class TransferEditTest {
 
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
 
-            Account sourceAccount = homePage.createAccountButton(accountType);
+            AccountCreatePage sourceAccount = homePage.createAccountButton(accountType);
             homePage = sourceAccount.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
 
-            Account destinationAccount = homePage.createAccountButton(accountType);
+            AccountCreatePage destinationAccount = homePage.createAccountButton(accountType);
             homePage = destinationAccount.createAccount(destinationAccountName,destinationAccountNumber,balance,date);
 
             TransferCreatePage newTransfer = homePage.createTransferButton();
@@ -83,8 +74,8 @@ public class TransferEditTest {
         editTransfer.editSourceAccount(sourceAccountName);
         editTransfer.editDestinationAccount(destinationAccountName);
         editTransfer.editAmount(transferAmount);
-        editTransfer.editTransferCategory(transferEditCategory);
-        editTransfer.editTransferNotes(transferNewNotes);
+        editTransfer.editCategory(transferEditCategory);
+        editTransfer.editNotes(transferNewNotes);
 
 
         TransferInformation transfer = editTransfer.updateTransfer();
@@ -137,7 +128,7 @@ public class TransferEditTest {
 
             allTransfers =  homePage.enterTransfers();
             TransferEditPage editTransfer = allTransfers.pickTransfer(transferDescription);
-            editTransfer.editTransferNotes(transferNewNotes);
+            editTransfer.editNotes(transferNewNotes);
             TransferInformation transfer = editTransfer.updateTransfer();
 
 

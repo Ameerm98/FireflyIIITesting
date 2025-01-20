@@ -52,21 +52,21 @@ public class HomePage extends LoadableComponent {
     public String getTitle(){
         return driver.getTitle();
     }
-    public Account createAccountButton(String type){
+    public AccountCreatePage createAccountButton(String type){
         try {
             driver.findElement(createSideBarBy).click();
             Thread.sleep(1000);
             if (type.equals("asset")){
                 driver.findElement(assetAccountBy).click();
                 Thread.sleep(1000);
-                return new Account(driver,"asset");
+                return new AccountCreatePage(driver,"asset");
             } else {
                 if (type.equals("expense")){
                     driver.findElement(expenseAccountBy).click();
-                    return new Account(driver,"expense");
+                    return new AccountCreatePage(driver,"expense");
                 }else{
                     driver.findElement(revenueAccountBy).click();
-                    return new Account(driver,"revenue");
+                    return new AccountCreatePage(driver,"revenue");
                 }
 
             }

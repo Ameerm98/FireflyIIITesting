@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import java.time.Duration;
 import java.util.Objects;
 
-public class Account {
+public class AccountCreatePage {
     private final WebDriver driver;
     String name;
     String type;
@@ -18,7 +18,7 @@ public class Account {
     private By openingBalanceDateBy = By.name("opening_balance_date");
     private By submitButtonBy = By.className("btn-success");
     private By successMessageBy = By.className("alert-success");
-    Account(WebDriver driver, String type){
+    AccountCreatePage(WebDriver driver, String type){
         this.driver =driver;
         this.type = type;
     }

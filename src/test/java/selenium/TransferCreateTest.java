@@ -4,16 +4,7 @@ import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,7 +13,7 @@ public class TransferCreateTest {
     private WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
-    private static final String setUpErrorMessage ="setUp Failed";
+    private static final String ErrorMessage ="Test Failed:";
     private static final String expectedPageTitle = "Spotify Clone";
     private static final String loginEmail = "ameertechnion1998@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
@@ -57,7 +48,7 @@ public class TransferCreateTest {
     public void emptyTransferCreate() {
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -72,23 +63,27 @@ public class TransferCreateTest {
     public void validTransferCreate() {
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
+
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
+
             TransferCreatePage transferCreatePage = homePage.createTransferButton();
             transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "transfer all balance");
+
             assertTrue(transferCreatePage.transferCreated("transfer all balance"));
 
         } catch (InterruptedException _){
-
+            System.out.println(ErrorMessage+" validTransferCreate");
         }
     }
     @Test
     public void transferWithNoDescription(){
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -104,7 +99,7 @@ public class TransferCreateTest {
     public void transferWithMissingSourceAccount(){
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -119,7 +114,7 @@ public class TransferCreateTest {
     public void transferWithMissingDestinationAccount(){
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -135,7 +130,7 @@ public class TransferCreateTest {
     public void transferWithNonExistanceAccounts(){
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -152,7 +147,7 @@ public class TransferCreateTest {
     public void transferZeroOrNegativeAmount(){
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
@@ -173,7 +168,7 @@ public class TransferCreateTest {
         try {
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
 
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
 
             accountCreatePage = homePage.createAccountButton(accountType);
@@ -198,7 +193,7 @@ public class TransferCreateTest {
 
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
 
-            Account accountCreatePage = homePage.createAccountButton(accountType);
+            AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
 
             accountCreatePage = homePage.createAccountButton(accountType);
