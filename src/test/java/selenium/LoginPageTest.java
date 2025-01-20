@@ -54,11 +54,6 @@ public class LoginPageTest {
         assertEquals(invalidCredentialsMessage, page.invalidCredentialsMessage());
     }
 
-    @Test
-    public void testResetPassWord(){
-       //  assertEquals(resetPasswordSuccessMessage,
-        //         loginPage.resetPassword().reset(loginEmail));
-    }
 
     @AfterEach
     public void tearDown() {
