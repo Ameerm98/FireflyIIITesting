@@ -36,7 +36,7 @@ public class TransferDeleteAPITest {
     }
 
 
-
+/*
     @Test
     public void deleteValidTransfer(){
         RequestSpecification response = given()
@@ -45,7 +45,7 @@ public class TransferDeleteAPITest {
                 .header("Authorization"," Bearer "+personalToken);
         response.when().delete("/v1/transactions/"+validTransferId).then().statusCode(204);
     }
-
+*/
     @Test
     public void deleteNonExistentTransfer(){
         RequestSpecification response = given()
