@@ -41,7 +41,7 @@ jobs:
           
           mvn test -Dtest=**/selenium/LoginPageTest#testValidLogin
           mvn test -Dtest=**/selenium/TransferCreateTest#validTransferCreate
-          mvn test -Dtest=**/selenium/TransferEditTest#editAllFields
+          mvn test -Dtest=**/selenium/TransferEditTest#editTransferAmount
           
           
           # Tear down grid if exists
