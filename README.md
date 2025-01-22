@@ -283,6 +283,17 @@ The primary objective of these tests is to ensure the quality and reliability
 ![image](https://github.com/user-attachments/assets/448faa3c-c133-49ec-ac20-660c598a45cd)
 
 
+
+### Features Tested
+
+UI:-
+-** Transfer Create
+-** Transfer Edit
+API Endpoints :-
+-** Transfer DELETE
+-** GET All Transfers
+
+
 ---
 
 ##  Contributing
