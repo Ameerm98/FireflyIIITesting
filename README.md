@@ -287,8 +287,9 @@ The primary objective of these tests is to ensure the quality and reliability
 ### Features Tested
 
 UI:-
--** Transfer Create **
+-** Transfer Create
 -** Transfer Edit
+
 API Endpoints :-
 -** Transfer DELETE
 -** GET All Transfers
