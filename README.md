@@ -291,8 +291,8 @@ UI:-
 - Transfer Edit
 
 API Endpoints :-
--** Transfer DELETE
--** GET All Transfers
+- Transfer DELETE
+- GET All Transfers
 
 
 ---
