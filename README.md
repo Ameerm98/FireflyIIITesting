@@ -291,7 +291,7 @@ UI:-
 - Transfer Edit
 
 API Endpoints :-
-- Transfer DELETE
+- DELETE Transfer 
 - GET All Transfers
 
 ### Testing Design
