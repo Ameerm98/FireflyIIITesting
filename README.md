@@ -294,15 +294,28 @@ API Endpoints :-
 - Transfer DELETE
 - GET All Transfers
 
+### Testing Design
+
+UI:-
+- Selenium
+- Pom(Page Object Model)
+- Junit
+API:-
+- Rest Assured
+- Junit
+
+### Running Tests:-
+(Make sure baseURL updated according to the running environment)
+
+Locally:-
+- Mvn(command use example:- mvn test)
+
+Remote:-
+- use ngrok 
+- Run in Github Actions ,Manual Trigger()
+
 
 ---
-
-##  Contributing
-
-- **💬 [Join the Discussions](https://github.com/Ameerm98/FireflyIIITesting/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/Ameerm98/FireflyIIITesting/issues)**: Submit bugs found or log feature requests for the `FireflyIIITesting` project.
-- **💡 [Submit Pull Requests](https://github.com/Ameerm98/FireflyIIITesting/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
 <details closed>
 <summary>Contributing Guidelines</summary>
 
