@@ -312,7 +312,9 @@ Locally:-
 - Mvn(command use example:- mvn test)
 
 Remote:-
-- use ngrok 
+- use ngrok
+- Update APP_URL variable in docker-compose.yml file
+- run again the docker command to recreate the images
 - Run in Github Actions ,Manual Trigger()
 
 
