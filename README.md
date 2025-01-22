@@ -237,7 +237,7 @@ Together, these files contribute to the overall architecture of the project by p
 
 Before getting started with FireflyIIITesting, ensure your runtime environment meets the following requirements:
 
-- **Programming Language:** Java
+- **IDE:** Intellij(Java)
 - **Container Runtime:** Docker
 
 
@@ -278,16 +278,10 @@ Run FireflyIIITesting using the following command:
 ```
 
 
-###  Testing
-Run the test suite using the following command:
-echo 'INSERT-TEST-COMMAND-HERE'
+### Testing Objectives
+The primary objective of these tests is to ensure the quality and reliability of Firefly III critical features by executing automated UI testing and API Testing 
+![image](https://github.com/user-attachments/assets/448faa3c-c133-49ec-ac20-660c598a45cd)
 
----
-##  Project Roadmap
-
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
 
 ---
 
