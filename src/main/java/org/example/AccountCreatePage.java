@@ -11,7 +11,7 @@ public class AccountCreatePage {
     String name;
     String type;
     int balance=0;
-    private By homepageBy = By.linkText("https://42de-2a06-c701-9ca4-ad00-7981-bb0f-7085-b2e5.ngrok-free.app");
+    private By homepageBy = By.linkText("http://localhost:80");
     private By nameInputBy = By.id("ffInput_name");
     private By accountNumberBy = By.name("account_number");
     private By openingBalanceBy = By.name("opening_balance");

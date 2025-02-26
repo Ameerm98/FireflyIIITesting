@@ -144,7 +144,7 @@ public class TransferCreatePage {
 
 
 
-    public boolean transferCreated(String name){
+    public boolean transferCreated(){
         return driver.findElement(successMessageBy).getText().contains("Successfully created");
     }
 

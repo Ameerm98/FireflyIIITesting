@@ -13,9 +13,7 @@ public class TransferCreateTest {
     private WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
-    private static final String ErrorMessage ="Test Failed:";
-    private static final String expectedPageTitle = "Spotify Clone";
-    private static final String loginEmail = "ameerfade981@gmail.com";
+    private static final String loginEmail = "ameer98@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
     private static final String accountType = "asset";
     private static final String sourceAccountName = "hapoalim";
@@ -23,14 +21,11 @@ public class TransferCreateTest {
     private static final String destinationAccountName = "mercantel";
     private static final String destinationAccountNumber = "2";
     private static final String balance ="10000";
-    private static final String transferAmount ="1000";
-    private static final String transferEditAmount ="100";
-    private static final String transferDescription ="new Transfer Created";
-    private static final String transferEditDescription = "editedDescription";
-    private static final String transferCategory ="mobile";
     private static final String transferEditCategory ="Studies";
     private static final String transferNewNotes ="new added notes";
     private static final String date = "16/01/2025";
+    private static final String ErrorMessage ="Test Failed:";
+
 
 
     @BeforeEach
@@ -56,24 +51,32 @@ public class TransferCreateTest {
             transferCreatePage.createEmptyTransfer();
             assertTrue(transferCreatePage.transferNotCreated());
         } catch (Exception _) {
+            System.out.println(ErrorMessage+" emptyTransferCreate");
+
         }
     }
 
     @Test
     public void validTransferCreate() {
         try {
+            // Login
             HomePage homePage = loginPage.loginAsValidUser(loginEmail, loginPassword);
 
+
+            // create source account
             AccountCreatePage accountCreatePage = homePage.createAccountButton(accountType);
             homePage = accountCreatePage.createAccount(sourceAccountName, sourceAccountNumber, balance, date);
 
+            //create destination account
             accountCreatePage = homePage.createAccountButton(accountType);
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
 
+            //create transfer between Source account and destination account
             TransferCreatePage transferCreatePage = homePage.createTransferButton();
             transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "transfer all balance");
 
-            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
+            //check success message
+            assertTrue(transferCreatePage.transferCreated());
 
         } catch (InterruptedException _){
             System.out.println(ErrorMessage+" validTransferCreate");
@@ -91,7 +94,7 @@ public class TransferCreateTest {
             transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "");
             assertTrue(transferCreatePage.transferNotCreated());
         } catch (Exception _) {
-
+            System.out.println(ErrorMessage+" transferWithNoDescription");
         }
     }
 
@@ -105,8 +108,10 @@ public class TransferCreateTest {
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
             TransferCreatePage transferCreatePage = homePage.createTransferButton();
             transferCreatePage.createTransfer("", destinationAccountName, balance, date, "No Source Account Transfer");
-            assertTrue(transferCreatePage.transferCreated("No Source Account Transfer"));
+            assertTrue(transferCreatePage.transferCreated());
         } catch (InterruptedException _) {
+            System.out.println(ErrorMessage+" transferWithMissingSourceAccount");
+
 
         }
     }
@@ -120,9 +125,9 @@ public class TransferCreateTest {
             accountCreatePage.createAccount(destinationAccountName, destinationAccountNumber, balance, date);
             TransferCreatePage transferCreatePage = homePage.createTransferButton();
             transferCreatePage.createTransfer(destinationAccountName, "", balance, date, "No Destination Account Transfer");
-            assertTrue(transferCreatePage.transferCreated("No Destination Account Transfer"));
+            assertTrue(transferCreatePage.transferCreated());
         } catch (InterruptedException _) {
-
+            System.out.println(ErrorMessage+" transferWithMissingDestinationAccount");
         }
     }
         /// ////////////// new tests
@@ -139,6 +144,8 @@ public class TransferCreateTest {
             assertTrue(transferCreatePage.transferNotCreated());
 
         } catch (InterruptedException _){
+            System.out.println(ErrorMessage+" transferWithNonExistanceAccounts");
+
 
         }
     }
@@ -159,6 +166,8 @@ public class TransferCreateTest {
 
 
         } catch (InterruptedException _){
+            System.out.println(ErrorMessage+" transferZeroOrNegativeAmount");
+
 
         }
     }
@@ -180,8 +189,10 @@ public class TransferCreateTest {
 
             TransferCreatePage transferCreatePage = homePage.createTransferButton();
             transferCreatePage.createCategorizedTransfer(sourceAccountName, destinationAccountName, "2000", date, "transfer",transferEditCategory);
-            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
+            assertTrue(transferCreatePage.transferCreated());
         } catch (InterruptedException _){
+            System.out.println(ErrorMessage+" transferCategorize");
+
 
         }
     }
@@ -203,8 +214,10 @@ public class TransferCreateTest {
             transferCreatePage.addNotesToTransfer(transferNewNotes);
 
             transferCreatePage.createTransfer(sourceAccountName, destinationAccountName, balance, date, "transfer all balance");
-            assertTrue(transferCreatePage.transferCreated("transfer all balance"));
+            assertTrue(transferCreatePage.transferCreated());
         }catch (Exception _){
+            System.out.println(ErrorMessage+" notedTransferCreate");
+
 
         }
     }
@@ -217,6 +230,7 @@ public class TransferCreateTest {
             homePage.deleteCreatedAccounts();
             driver.quit();
         }catch (Exception _){
+
 
         }
 

@@ -17,9 +17,8 @@ public class TransferEditTest {
     LoginPage loginPage;
     Transfers allTransfers;
     HomePage homePage;
-    private static final String setUpErrorMessage ="setUp Failed";
-    private static final String expectedPageTitle = "Spotify Clone";
-    private static final String loginEmail = "ameerfade981@gmail.com";
+    private static final String ErrorMessage ="Test Failed:";
+    private static final String loginEmail = "ameer98@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
     private static final String accountType = "asset";
     private static final String sourceAccountName = "hapoalim";
@@ -60,7 +59,7 @@ public class TransferEditTest {
 
 
         }catch (Exception _){
-            System.out.println(setUpErrorMessage);
+            System.out.println(ErrorMessage);
         }
     }
 
@@ -103,7 +102,7 @@ public class TransferEditTest {
 
 
         }catch (Exception _){
-
+            System.out.println(ErrorMessage+" editTransferAmount");
         }
     }
 
@@ -118,7 +117,7 @@ public class TransferEditTest {
             assertEquals(transferEditDescription,transfer.getDescription());
 
         }catch (Exception _){
-
+            System.out.println(ErrorMessage+" editDescription");
         }
     }
     @Test
@@ -135,7 +134,7 @@ public class TransferEditTest {
             assertTrue(transfer.transferEditSuccess());
             assertEquals(transferNewNotes,transfer.getNotes());
         }catch (Exception _){
-
+            System.out.println(ErrorMessage+" editNotes");
         }
 
 
@@ -147,7 +146,7 @@ public class TransferEditTest {
             homePage.deleteCreatedAccounts();
             driver.quit();
         }catch (Exception _){
-
+            System.out.println(ErrorMessage+" tearDown");
         }
 
     }

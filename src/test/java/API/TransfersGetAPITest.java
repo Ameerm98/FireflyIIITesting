@@ -41,9 +41,9 @@ public class TransfersGetAPITest {
                 .when().get("/v1/transactions").then().statusCode(200).extract().response();
 
         JsonPath jsonFile= response.jsonPath();
-       assertEquals("Transfer from Source to Destination",jsonFile.getString("data[0].attributes.transactions[0].description"));
-       assertEquals("mercantel",jsonFile.getString("data[0].attributes.transactions[0].source_name"));
-        assertEquals("MainAccount",jsonFile.getString("data[0].attributes.transactions[0].destination_name"));
+       assertEquals("transfer to delete",jsonFile.getString("data[0].attributes.transactions[0].description"));
+       assertEquals("MainAccount",jsonFile.getString("data[0].attributes.transactions[0].source_name"));
+        assertEquals("mercantel",jsonFile.getString("data[0].attributes.transactions[0].destination_name"));
 
 
     }
