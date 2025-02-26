@@ -13,7 +13,7 @@ public class TransferCreateTest {
     private WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
-    private static final String loginEmail = "ameer98@gmail.com";
+    private static final String loginEmail = "ameertechnion1998@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
     private static final String accountType = "asset";
     private static final String sourceAccountName = "hapoalim";
