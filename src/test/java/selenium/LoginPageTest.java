@@ -11,6 +11,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,7 +33,12 @@ public class LoginPageTest {
     private static final String resetPasswordSuccessMessage = "Thank you. If an account exists with this email address, you will find instructions in your inbox.";
     @BeforeEach
     public void setUp(){
-        driver = DriverFactory.getDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // New headless mode
+        options.addArguments("--no-sandbox");    // Required for CI
+        options.addArguments("--disable-dev-shm-usage");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         loginPage.get();
