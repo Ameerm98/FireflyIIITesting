@@ -1,7 +1,8 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/firefly-iii/firefly-iii/develop/.github/assets/img/logo-small.png" align="center" width="30%">
 </p>
-<p align="center"><h1 align="center">Firefly III Testing</h1></p>
+<p align="center"><h1 align="center">Firefly III Testing Repository Automation Project
+</h1></p>
 <p align="center">
 	<em>Empowering Secure Financial Transfers with Robust Testing</em>
 </p>
@@ -17,44 +18,11 @@
 </p>
 <br>
 
-##  Table of Contents
-
-- [ Overview](#-overview)
-- [ Features](#-features)
-- [ Project Structure](#-project-structure)
-  - [ Project Index](#-project-index)
-- [ Getting Started](#-getting-started)
-  - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
-
 ---
 
 ##  Overview
 
 FireflyIIITesting is an open-source project designed to streamline and secure financial transactions. It offers robust features such as creating, editing, and deleting transfers, managing user accounts, and categorizing transactions. The project also emphasizes security with JWT authentication and automated UI testing. Ideal for financial tech developers and users seeking a reliable, user-friendly platform for managing their finances.
-
----
-
-##  Features
-
-|      | Feature         | Summary       |
-| :--- | :---:           | :---          |
-| ⚙️  | **Architecture**  | <ul><li>Uses a combination of Java and YAML for the main codebase and testing.</li><li>Utilizes Docker for containerization, as seen in the `docker-compose.yml` file.</li><li>Employs a MySQL database for data storage and management, as indicated by the `.db.env` file.</li></ul> |
-| 🔩 | **Code Quality**  | <ul><li>Code is well-structured and organized into different directories and files based on functionality.</li><li>Java classes are used for different functionalities such as login, transfer creation, and account management.</li><li>YAML files are used for setting up automated tests and workflows.</li></ul> |
-| 📄 | **Documentation** | <ul><li>Primary language used is Java, with additional usage of YAML and Patch.</li><li>Usage and installation commands are provided for Docker.</li><li>No package managers are used in the project.</li></ul> |
-| 🔌 | **Integrations**  | <ul><li>Integrates with Docker for containerization and deployment.</li><li>Uses GitHub Actions for automated testing and workflows.</li><li>Interacts with a MySQL database for data storage and management.</li></ul> |
-| 🧩 | **Modularity**    | <ul><li>Code is modular with separate Java classes for different functionalities.</li><li>YAML files are used for different testing and workflow setups.</li><li>Separate files are used for environment and database configuration.</li></ul> |
-| 🧪 | **Testing**       | <ul><li>Uses YAML files to set up automated UI and API testing.</li><li>Tests are run on both Chrome and Firefox browsers.</li><li>Testing includes login, transfer creation, and transfer editing functionalities.</li></ul> |
-| ⚡️  | **Performance**   | <ul><li>Uses Docker for efficient deployment and operation.</li><li>Employs a MySQL database for efficient data storage and management.</li><li>Automated testing ensures the performance of different functionalities.</li></ul> |
-| 🛡️ | **Security**      | <ul><li>Uses a JWT (JSON Web Token) for authentication and secure data exchange.</li><li>Employs a MySQL database with a random root password for secure data storage.</li><li>Environment variables are stored securely in the `.env` file.</li></ul> |
-| 📦 | **Dependencies**  | <ul><li>Depends on Docker for containerization and deployment.</li><li>Depends on GitHub Actions for automated testing and workflows.</li><li>Depends on a MySQL database for data storage and management.</li></ul> |
-| 🚀 | **Scalability**   | <ul><li>Uses Docker for scalable deployment and operation.</li><li>Employs a MySQL database for scalable data storage and management.</li><li>Automated testing ensures the scalability of different functionalities.</li></ul> |
 
 ---
 
@@ -269,7 +237,7 @@ Together, these files contribute to the overall architecture of the project by p
 
 Before getting started with FireflyIIITesting, ensure your runtime environment meets the following requirements:
 
-- **Programming Language:** Java
+- **IDE:** Intellij(Java)
 - **Container Runtime:** Docker
 
 
@@ -310,25 +278,47 @@ Run FireflyIIITesting using the following command:
 ```
 
 
-###  Testing
-Run the test suite using the following command:
-echo 'INSERT-TEST-COMMAND-HERE'
+### Testing Objectives
+The primary objective of these tests is to ensure the quality and reliability of Firefly III critical features by executing automated UI testing and API Testing 
+![image](https://github.com/user-attachments/assets/448faa3c-c133-49ec-ac20-660c598a45cd)
+
+
+
+### Features Tested
+
+UI:-
+- Transfer Create
+- Transfer Edit
+
+API Endpoints :-
+- DELETE Transfer 
+- GET All Transfers
+
+### Testing Design
+
+UI:-
+- Selenium
+- Pom(Page Object Model)
+- Junit
+  
+API:-
+- Rest Assured
+- Junit
+
+### Running Tests:-
+(Make sure baseURL updated according to the running environment)
+
+Locally:-
+- Mvn(command use example:- mvn test)
+
+Remote:-
+- use ngrok
+- Update APP_URL variable in docker-compose.yml file
+- run again the docker command to recreate the images
+- Run in Github Actions ,Manual Trigger()
+
 
 ---
-##  Project Roadmap
-
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
-
-##  Contributing
-
-- **💬 [Join the Discussions](https://github.com/Ameerm98/FireflyIIITesting/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/Ameerm98/FireflyIIITesting/issues)**: Submit bugs found or log feature requests for the `FireflyIIITesting` project.
-- **💡 [Submit Pull Requests](https://github.com/Ameerm98/FireflyIIITesting/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
 <details closed>
 <summary>Contributing Guidelines</summary>
 
@@ -364,16 +354,3 @@ echo 'INSERT-TEST-COMMAND-HERE'
 </p>
 </details>
 
----
-
-##  License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
----
