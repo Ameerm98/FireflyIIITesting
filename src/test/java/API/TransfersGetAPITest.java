@@ -23,7 +23,7 @@ public class TransfersGetAPITest {
     @BeforeEach
     public void setup() {
         RestAssured.useRelaxedHTTPSValidation();
-        RestAssured.baseURI = "http://localhost:80/api";
+        RestAssured.baseURI = "https://ac49-2a06-c701-497e-fb00-f902-1d42-f6fb-f91a.ngrok-free.app/api";
         //RestAssured.port = 80; // Adjust port as needed
 
     }

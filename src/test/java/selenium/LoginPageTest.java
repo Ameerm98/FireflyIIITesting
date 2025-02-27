@@ -11,7 +11,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LoginPageTest {
     private WebDriver driver;
     private LoginPage loginPage;
-    private final String baseURL = "http://localhost:80";
+    private final String baseURL = "https://ac49-2a06-c701-497e-fb00-f902-1d42-f6fb-f91a.ngrok-free.app";
 
     private static final String loginEmail = "ameertechnion1998@gmail.com";
     private static final String loginPassword = "AmeerFadeAws250298#";
@@ -33,12 +32,7 @@ public class LoginPageTest {
     private static final String resetPasswordSuccessMessage = "Thank you. If an account exists with this email address, you will find instructions in your inbox.";
     @BeforeEach
     public void setUp(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // New headless mode
-        options.addArguments("--no-sandbox");    // Required for CI
-        options.addArguments("--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         loginPage.get();

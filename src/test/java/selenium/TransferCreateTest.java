@@ -5,8 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,12 +30,7 @@ public class TransferCreateTest {
 
     @BeforeEach
     public void setUp(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // New headless mode
-        options.addArguments("--no-sandbox");    // Required for CI
-        options.addArguments("--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         loginPage.get();

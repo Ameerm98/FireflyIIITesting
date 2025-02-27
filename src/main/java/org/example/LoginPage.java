@@ -15,7 +15,7 @@ import java.time.Duration;
 
 public class LoginPage extends LoadableComponent {
 
-    private final String baseURL = "http://localhost:80";
+    private final String baseURL = "https://ac49-2a06-c701-497e-fb00-f902-1d42-f6fb-f91a.ngrok-free.app";
     private WebDriver driver;
     private By emailFieldBy = By.name("email");
     private By passwordFieldBy = By.name("password");

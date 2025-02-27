@@ -5,8 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,12 +38,7 @@ public class TransferEditTest {
     @BeforeEach
     public void setUp(){
         try {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless=new"); // New headless mode
-            options.addArguments("--no-sandbox");    // Required for CI
-            options.addArguments("--disable-dev-shm-usage");
-
-            driver = new ChromeDriver(options);
+            driver = DriverFactory.getDriver();
             driver.manage().window().maximize();
             loginPage = new LoginPage(driver);
             homePage = new HomePage(driver);

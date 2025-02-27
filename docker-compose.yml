@@ -1,8 +1,8 @@
 services:
   app:
-    image: fireflyiii/core:latest
+    image: ameerm98/fireflyiii:2025-02-26_22-44-55
     hostname: app
-    container_name: firefly_iii_core
+    container_name: firefly_iii_latest
     restart: always
     volumes:
       - firefly_iii_upload:/var/www/html/storage/upload
@@ -12,7 +12,7 @@ services:
     ports:
       - 80:8080
     environment:
-      - APP_URL =https://42de-2a06-c701-9ca4-ad00-7981-bb0f-7085-b2e5.ngrok-free.app
+      - APP_URL =https://ac49-2a06-c701-497e-fb00-f902-1d42-f6fb-f91a.ngrok-free.app
     depends_on:
       - db
   db:
@@ -37,15 +37,15 @@ services:
     command: sh -c "
       apk add tzdata
       && ln -s /usr/share/zoneinfo/${TZ} /etc/localtime
-      | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/REPLACEME;echo\" 
-      | crontab - 
+      | echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/REPLACEME;echo\"
+      | crontab -
       && crond -f -L /dev/stdout"
     networks:
       - firefly_iii
 
 volumes:
-   firefly_iii_upload:
-   firefly_iii_db:
+  firefly_iii_upload:
+  firefly_iii_db:
 
 networks:
   firefly_iii:

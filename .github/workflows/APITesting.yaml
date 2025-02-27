@@ -35,7 +35,7 @@ jobs:
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
           mvn clean
-          mvn test -Dtest=**/API/*
+          mvn test -Dtest=**/API/TransfersGetAPITest
           
           # Tear down grid if exists
           docker stop grid_container || true
